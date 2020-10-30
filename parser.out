@@ -1,0 +1,3992 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> instructions
+Rule 2     instructions -> instruction instructions
+Rule 3     instructions -> <empty>
+Rule 4     instruction -> SEMICOLON
+Rule 5     expression -> INTEGER
+Rule 6     expression -> FLOAT
+Rule 7     expression -> matrix
+Rule 8     expression -> STRING
+Rule 9     expression -> ID
+Rule 10    expression -> LPAREN expression RPAREN
+Rule 11    instructions_scope -> LCURLY instructions RCURLY
+Rule 12    expression -> expression PLUS expression
+Rule 13    expression -> expression MINUS expression
+Rule 14    expression -> expression TIMES expression
+Rule 15    expression -> expression DIVIDE expression
+Rule 16    expression -> expression DOTPLUS expression
+Rule 17    expression -> expression DOTMINUS expression
+Rule 18    expression -> expression DOTTIMES expression
+Rule 19    expression -> expression DOTDIVIDE expression
+Rule 20    bool -> expression LESSER expression
+Rule 21    bool -> expression GREATER expression
+Rule 22    bool -> expression LESSEREQUAL expression
+Rule 23    bool -> expression GREATEREQUAL expression
+Rule 24    bool -> expression NOTEQUAL expression
+Rule 25    bool -> expression EQUAL expression
+Rule 26    expression -> MINUS expression
+Rule 27    matrix -> expression TRANS
+Rule 28    instruction -> ID ASSIGN matrix SEMICOLON
+Rule 29    matrix -> ZEROS LPAREN expression RPAREN
+Rule 30    matrix -> ONES LPAREN expression RPAREN
+Rule 31    matrix -> EYE LPAREN expression RPAREN
+Rule 32    instruction -> ID ASSIGN expression SEMICOLON
+Rule 33    instruction -> ID PLUSASSIGN expression SEMICOLON
+Rule 34    instruction -> ID MINUSASSIGN expression SEMICOLON
+Rule 35    instruction -> ID TIMESASSIGN expression SEMICOLON
+Rule 36    instruction -> ID DIVIDEASSIGN expression SEMICOLON
+Rule 37    instruction -> ID array ASSIGN expression SEMICOLON
+Rule 38    instruction -> ID array PLUSASSIGN expression SEMICOLON
+Rule 39    instruction -> ID array MINUSASSIGN expression SEMICOLON
+Rule 40    instruction -> ID array TIMESASSIGN expression SEMICOLON
+Rule 41    instruction -> ID array DIVIDEASSIGN expression SEMICOLON
+Rule 42    instruction -> IF bool instructions_scope
+Rule 43    instruction -> IF bool instructions_scope ELSE instructions_scope
+Rule 44    instruction -> WHILE LBRACET bool RBRACET instructions_scope
+Rule 45    instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope
+Rule 46    instruction -> BREAK SEMICOLON
+Rule 47    instruction -> CONTINUE SEMICOLON
+Rule 48    instruction -> RETURN SEMICOLON
+Rule 49    instruction -> PRINT expression
+Rule 50    matrix -> LBRACET arraylist RBRACET
+Rule 51    arraylist -> array
+Rule 52    arraylist -> array COMMA arraylist
+Rule 53    array -> LBRACET list RBRACET
+Rule 54    list -> expression
+Rule 55    list -> expression COMMA list
+Rule 56    expression -> ID array
+
+Terminals, with rules where they appear
+
+ASSIGN               : 28 32 37 45
+BREAK                : 46
+COMMA                : 52 55
+COMMENT              : 
+CONTINUE             : 47
+DIVIDE               : 15
+DIVIDEASSIGN         : 36 41
+DOTDIVIDE            : 19
+DOTMINUS             : 17
+DOTPLUS              : 16
+DOTTIMES             : 18
+ELSE                 : 43
+EQUAL                : 25
+EYE                  : 31
+FLOAT                : 6
+FOR                  : 45
+GREATER              : 21
+GREATEREQUAL         : 23
+ID                   : 9 28 32 33 34 35 36 37 38 39 40 41 45 56
+IF                   : 42 43
+INTEGER              : 5
+LBRACET              : 44 50 53
+LCURLY               : 11
+LESSER               : 20
+LESSEREQUAL          : 22
+LPAREN               : 10 29 30 31
+MINUS                : 13 26
+MINUSASSIGN          : 34 39
+NOTEQUAL             : 24
+ONES                 : 30
+PLUS                 : 12
+PLUSASSIGN           : 33 38
+PRINT                : 49
+RANGE                : 45
+RBRACET              : 44 50 53
+RCURLY               : 11
+RETURN               : 48
+RPAREN               : 10 29 30 31
+SEMICOLON            : 4 28 32 33 34 35 36 37 38 39 40 41 46 47 48
+STRING               : 8
+TIMES                : 14
+TIMESASSIGN          : 35 40
+TRANS                : 27
+WHILE                : 44
+ZEROS                : 29
+error                : 
+
+Nonterminals, with rules where they appear
+
+array                : 37 38 39 40 41 51 52 56
+arraylist            : 50 52
+bool                 : 42 43 44
+expression           : 10 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 27 29 30 31 32 33 34 35 36 37 38 39 40 41 45 45 49 54 55
+instruction          : 2
+instructions         : 1 2 11
+instructions_scope   : 42 43 43 44 45
+list                 : 53 55
+matrix               : 7 28
+program              : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . instructions
+    (2) instructions -> . instruction instructions
+    (3) instructions -> .
+    (4) instruction -> . SEMICOLON
+    (28) instruction -> . ID ASSIGN matrix SEMICOLON
+    (32) instruction -> . ID ASSIGN expression SEMICOLON
+    (33) instruction -> . ID PLUSASSIGN expression SEMICOLON
+    (34) instruction -> . ID MINUSASSIGN expression SEMICOLON
+    (35) instruction -> . ID TIMESASSIGN expression SEMICOLON
+    (36) instruction -> . ID DIVIDEASSIGN expression SEMICOLON
+    (37) instruction -> . ID array ASSIGN expression SEMICOLON
+    (38) instruction -> . ID array PLUSASSIGN expression SEMICOLON
+    (39) instruction -> . ID array MINUSASSIGN expression SEMICOLON
+    (40) instruction -> . ID array TIMESASSIGN expression SEMICOLON
+    (41) instruction -> . ID array DIVIDEASSIGN expression SEMICOLON
+    (42) instruction -> . IF bool instructions_scope
+    (43) instruction -> . IF bool instructions_scope ELSE instructions_scope
+    (44) instruction -> . WHILE LBRACET bool RBRACET instructions_scope
+    (45) instruction -> . FOR ID ASSIGN expression RANGE expression instructions_scope
+    (46) instruction -> . BREAK SEMICOLON
+    (47) instruction -> . CONTINUE SEMICOLON
+    (48) instruction -> . RETURN SEMICOLON
+    (49) instruction -> . PRINT expression
+
+    $end            reduce using rule 3 (instructions -> .)
+    SEMICOLON       shift and go to state 4
+    ID              shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    BREAK           shift and go to state 9
+    CONTINUE        shift and go to state 10
+    RETURN          shift and go to state 11
+    PRINT           shift and go to state 12
+
+    program                        shift and go to state 1
+    instructions                   shift and go to state 2
+    instruction                    shift and go to state 3
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> instructions .
+
+    $end            reduce using rule 1 (program -> instructions .)
+
+
+state 3
+
+    (2) instructions -> instruction . instructions
+    (2) instructions -> . instruction instructions
+    (3) instructions -> .
+    (4) instruction -> . SEMICOLON
+    (28) instruction -> . ID ASSIGN matrix SEMICOLON
+    (32) instruction -> . ID ASSIGN expression SEMICOLON
+    (33) instruction -> . ID PLUSASSIGN expression SEMICOLON
+    (34) instruction -> . ID MINUSASSIGN expression SEMICOLON
+    (35) instruction -> . ID TIMESASSIGN expression SEMICOLON
+    (36) instruction -> . ID DIVIDEASSIGN expression SEMICOLON
+    (37) instruction -> . ID array ASSIGN expression SEMICOLON
+    (38) instruction -> . ID array PLUSASSIGN expression SEMICOLON
+    (39) instruction -> . ID array MINUSASSIGN expression SEMICOLON
+    (40) instruction -> . ID array TIMESASSIGN expression SEMICOLON
+    (41) instruction -> . ID array DIVIDEASSIGN expression SEMICOLON
+    (42) instruction -> . IF bool instructions_scope
+    (43) instruction -> . IF bool instructions_scope ELSE instructions_scope
+    (44) instruction -> . WHILE LBRACET bool RBRACET instructions_scope
+    (45) instruction -> . FOR ID ASSIGN expression RANGE expression instructions_scope
+    (46) instruction -> . BREAK SEMICOLON
+    (47) instruction -> . CONTINUE SEMICOLON
+    (48) instruction -> . RETURN SEMICOLON
+    (49) instruction -> . PRINT expression
+
+    $end            reduce using rule 3 (instructions -> .)
+    RCURLY          reduce using rule 3 (instructions -> .)
+    SEMICOLON       shift and go to state 4
+    ID              shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    BREAK           shift and go to state 9
+    CONTINUE        shift and go to state 10
+    RETURN          shift and go to state 11
+    PRINT           shift and go to state 12
+
+    instruction                    shift and go to state 3
+    instructions                   shift and go to state 13
+
+state 4
+
+    (4) instruction -> SEMICOLON .
+
+    SEMICOLON       reduce using rule 4 (instruction -> SEMICOLON .)
+    ID              reduce using rule 4 (instruction -> SEMICOLON .)
+    IF              reduce using rule 4 (instruction -> SEMICOLON .)
+    WHILE           reduce using rule 4 (instruction -> SEMICOLON .)
+    FOR             reduce using rule 4 (instruction -> SEMICOLON .)
+    BREAK           reduce using rule 4 (instruction -> SEMICOLON .)
+    CONTINUE        reduce using rule 4 (instruction -> SEMICOLON .)
+    RETURN          reduce using rule 4 (instruction -> SEMICOLON .)
+    PRINT           reduce using rule 4 (instruction -> SEMICOLON .)
+    $end            reduce using rule 4 (instruction -> SEMICOLON .)
+    RCURLY          reduce using rule 4 (instruction -> SEMICOLON .)
+
+
+state 5
+
+    (28) instruction -> ID . ASSIGN matrix SEMICOLON
+    (32) instruction -> ID . ASSIGN expression SEMICOLON
+    (33) instruction -> ID . PLUSASSIGN expression SEMICOLON
+    (34) instruction -> ID . MINUSASSIGN expression SEMICOLON
+    (35) instruction -> ID . TIMESASSIGN expression SEMICOLON
+    (36) instruction -> ID . DIVIDEASSIGN expression SEMICOLON
+    (37) instruction -> ID . array ASSIGN expression SEMICOLON
+    (38) instruction -> ID . array PLUSASSIGN expression SEMICOLON
+    (39) instruction -> ID . array MINUSASSIGN expression SEMICOLON
+    (40) instruction -> ID . array TIMESASSIGN expression SEMICOLON
+    (41) instruction -> ID . array DIVIDEASSIGN expression SEMICOLON
+    (53) array -> . LBRACET list RBRACET
+
+    ASSIGN          shift and go to state 14
+    PLUSASSIGN      shift and go to state 15
+    MINUSASSIGN     shift and go to state 16
+    TIMESASSIGN     shift and go to state 17
+    DIVIDEASSIGN    shift and go to state 18
+    LBRACET         shift and go to state 20
+
+    array                          shift and go to state 19
+
+state 6
+
+    (42) instruction -> IF . bool instructions_scope
+    (43) instruction -> IF . bool instructions_scope ELSE instructions_scope
+    (20) bool -> . expression LESSER expression
+    (21) bool -> . expression GREATER expression
+    (22) bool -> . expression LESSEREQUAL expression
+    (23) bool -> . expression GREATEREQUAL expression
+    (24) bool -> . expression NOTEQUAL expression
+    (25) bool -> . expression EQUAL expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    bool                           shift and go to state 21
+    expression                     shift and go to state 22
+    matrix                         shift and go to state 25
+
+state 7
+
+    (44) instruction -> WHILE . LBRACET bool RBRACET instructions_scope
+
+    LBRACET         shift and go to state 34
+
+
+state 8
+
+    (45) instruction -> FOR . ID ASSIGN expression RANGE expression instructions_scope
+
+    ID              shift and go to state 35
+
+
+state 9
+
+    (46) instruction -> BREAK . SEMICOLON
+
+    SEMICOLON       shift and go to state 36
+
+
+state 10
+
+    (47) instruction -> CONTINUE . SEMICOLON
+
+    SEMICOLON       shift and go to state 37
+
+
+state 11
+
+    (48) instruction -> RETURN . SEMICOLON
+
+    SEMICOLON       shift and go to state 38
+
+
+state 12
+
+    (49) instruction -> PRINT . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 39
+    matrix                         shift and go to state 25
+
+state 13
+
+    (2) instructions -> instruction instructions .
+
+    $end            reduce using rule 2 (instructions -> instruction instructions .)
+    RCURLY          reduce using rule 2 (instructions -> instruction instructions .)
+
+
+state 14
+
+    (28) instruction -> ID ASSIGN . matrix SEMICOLON
+    (32) instruction -> ID ASSIGN . expression SEMICOLON
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+
+    matrix                         shift and go to state 40
+    expression                     shift and go to state 41
+
+state 15
+
+    (33) instruction -> ID PLUSASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 42
+    matrix                         shift and go to state 25
+
+state 16
+
+    (34) instruction -> ID MINUSASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 43
+    matrix                         shift and go to state 25
+
+state 17
+
+    (35) instruction -> ID TIMESASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 44
+    matrix                         shift and go to state 25
+
+state 18
+
+    (36) instruction -> ID DIVIDEASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 45
+    matrix                         shift and go to state 25
+
+state 19
+
+    (37) instruction -> ID array . ASSIGN expression SEMICOLON
+    (38) instruction -> ID array . PLUSASSIGN expression SEMICOLON
+    (39) instruction -> ID array . MINUSASSIGN expression SEMICOLON
+    (40) instruction -> ID array . TIMESASSIGN expression SEMICOLON
+    (41) instruction -> ID array . DIVIDEASSIGN expression SEMICOLON
+
+    ASSIGN          shift and go to state 46
+    PLUSASSIGN      shift and go to state 47
+    MINUSASSIGN     shift and go to state 48
+    TIMESASSIGN     shift and go to state 49
+    DIVIDEASSIGN    shift and go to state 50
+
+
+state 20
+
+    (53) array -> LBRACET . list RBRACET
+    (54) list -> . expression
+    (55) list -> . expression COMMA list
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    list                           shift and go to state 51
+    expression                     shift and go to state 52
+    matrix                         shift and go to state 25
+
+state 21
+
+    (42) instruction -> IF bool . instructions_scope
+    (43) instruction -> IF bool . instructions_scope ELSE instructions_scope
+    (11) instructions_scope -> . LCURLY instructions RCURLY
+
+    LCURLY          shift and go to state 54
+
+    instructions_scope             shift and go to state 53
+
+state 22
+
+    (20) bool -> expression . LESSER expression
+    (21) bool -> expression . GREATER expression
+    (22) bool -> expression . LESSEREQUAL expression
+    (23) bool -> expression . GREATEREQUAL expression
+    (24) bool -> expression . NOTEQUAL expression
+    (25) bool -> expression . EQUAL expression
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LESSER          shift and go to state 55
+    GREATER         shift and go to state 56
+    LESSEREQUAL     shift and go to state 57
+    GREATEREQUAL    shift and go to state 58
+    NOTEQUAL        shift and go to state 59
+    EQUAL           shift and go to state 60
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 23
+
+    (5) expression -> INTEGER .
+
+    LESSER          reduce using rule 5 (expression -> INTEGER .)
+    GREATER         reduce using rule 5 (expression -> INTEGER .)
+    LESSEREQUAL     reduce using rule 5 (expression -> INTEGER .)
+    GREATEREQUAL    reduce using rule 5 (expression -> INTEGER .)
+    NOTEQUAL        reduce using rule 5 (expression -> INTEGER .)
+    EQUAL           reduce using rule 5 (expression -> INTEGER .)
+    PLUS            reduce using rule 5 (expression -> INTEGER .)
+    MINUS           reduce using rule 5 (expression -> INTEGER .)
+    TIMES           reduce using rule 5 (expression -> INTEGER .)
+    DIVIDE          reduce using rule 5 (expression -> INTEGER .)
+    DOTPLUS         reduce using rule 5 (expression -> INTEGER .)
+    DOTMINUS        reduce using rule 5 (expression -> INTEGER .)
+    DOTTIMES        reduce using rule 5 (expression -> INTEGER .)
+    DOTDIVIDE       reduce using rule 5 (expression -> INTEGER .)
+    TRANS           reduce using rule 5 (expression -> INTEGER .)
+    SEMICOLON       reduce using rule 5 (expression -> INTEGER .)
+    ID              reduce using rule 5 (expression -> INTEGER .)
+    IF              reduce using rule 5 (expression -> INTEGER .)
+    WHILE           reduce using rule 5 (expression -> INTEGER .)
+    FOR             reduce using rule 5 (expression -> INTEGER .)
+    BREAK           reduce using rule 5 (expression -> INTEGER .)
+    CONTINUE        reduce using rule 5 (expression -> INTEGER .)
+    RETURN          reduce using rule 5 (expression -> INTEGER .)
+    PRINT           reduce using rule 5 (expression -> INTEGER .)
+    $end            reduce using rule 5 (expression -> INTEGER .)
+    RCURLY          reduce using rule 5 (expression -> INTEGER .)
+    COMMA           reduce using rule 5 (expression -> INTEGER .)
+    RBRACET         reduce using rule 5 (expression -> INTEGER .)
+    RPAREN          reduce using rule 5 (expression -> INTEGER .)
+    LCURLY          reduce using rule 5 (expression -> INTEGER .)
+    RANGE           reduce using rule 5 (expression -> INTEGER .)
+
+
+state 24
+
+    (6) expression -> FLOAT .
+
+    LESSER          reduce using rule 6 (expression -> FLOAT .)
+    GREATER         reduce using rule 6 (expression -> FLOAT .)
+    LESSEREQUAL     reduce using rule 6 (expression -> FLOAT .)
+    GREATEREQUAL    reduce using rule 6 (expression -> FLOAT .)
+    NOTEQUAL        reduce using rule 6 (expression -> FLOAT .)
+    EQUAL           reduce using rule 6 (expression -> FLOAT .)
+    PLUS            reduce using rule 6 (expression -> FLOAT .)
+    MINUS           reduce using rule 6 (expression -> FLOAT .)
+    TIMES           reduce using rule 6 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 6 (expression -> FLOAT .)
+    DOTPLUS         reduce using rule 6 (expression -> FLOAT .)
+    DOTMINUS        reduce using rule 6 (expression -> FLOAT .)
+    DOTTIMES        reduce using rule 6 (expression -> FLOAT .)
+    DOTDIVIDE       reduce using rule 6 (expression -> FLOAT .)
+    TRANS           reduce using rule 6 (expression -> FLOAT .)
+    SEMICOLON       reduce using rule 6 (expression -> FLOAT .)
+    ID              reduce using rule 6 (expression -> FLOAT .)
+    IF              reduce using rule 6 (expression -> FLOAT .)
+    WHILE           reduce using rule 6 (expression -> FLOAT .)
+    FOR             reduce using rule 6 (expression -> FLOAT .)
+    BREAK           reduce using rule 6 (expression -> FLOAT .)
+    CONTINUE        reduce using rule 6 (expression -> FLOAT .)
+    RETURN          reduce using rule 6 (expression -> FLOAT .)
+    PRINT           reduce using rule 6 (expression -> FLOAT .)
+    $end            reduce using rule 6 (expression -> FLOAT .)
+    RCURLY          reduce using rule 6 (expression -> FLOAT .)
+    COMMA           reduce using rule 6 (expression -> FLOAT .)
+    RBRACET         reduce using rule 6 (expression -> FLOAT .)
+    RPAREN          reduce using rule 6 (expression -> FLOAT .)
+    LCURLY          reduce using rule 6 (expression -> FLOAT .)
+    RANGE           reduce using rule 6 (expression -> FLOAT .)
+
+
+state 25
+
+    (7) expression -> matrix .
+
+    LESSER          reduce using rule 7 (expression -> matrix .)
+    GREATER         reduce using rule 7 (expression -> matrix .)
+    LESSEREQUAL     reduce using rule 7 (expression -> matrix .)
+    GREATEREQUAL    reduce using rule 7 (expression -> matrix .)
+    NOTEQUAL        reduce using rule 7 (expression -> matrix .)
+    EQUAL           reduce using rule 7 (expression -> matrix .)
+    PLUS            reduce using rule 7 (expression -> matrix .)
+    MINUS           reduce using rule 7 (expression -> matrix .)
+    TIMES           reduce using rule 7 (expression -> matrix .)
+    DIVIDE          reduce using rule 7 (expression -> matrix .)
+    DOTPLUS         reduce using rule 7 (expression -> matrix .)
+    DOTMINUS        reduce using rule 7 (expression -> matrix .)
+    DOTTIMES        reduce using rule 7 (expression -> matrix .)
+    DOTDIVIDE       reduce using rule 7 (expression -> matrix .)
+    TRANS           reduce using rule 7 (expression -> matrix .)
+    SEMICOLON       reduce using rule 7 (expression -> matrix .)
+    ID              reduce using rule 7 (expression -> matrix .)
+    IF              reduce using rule 7 (expression -> matrix .)
+    WHILE           reduce using rule 7 (expression -> matrix .)
+    FOR             reduce using rule 7 (expression -> matrix .)
+    BREAK           reduce using rule 7 (expression -> matrix .)
+    CONTINUE        reduce using rule 7 (expression -> matrix .)
+    RETURN          reduce using rule 7 (expression -> matrix .)
+    PRINT           reduce using rule 7 (expression -> matrix .)
+    $end            reduce using rule 7 (expression -> matrix .)
+    RCURLY          reduce using rule 7 (expression -> matrix .)
+    COMMA           reduce using rule 7 (expression -> matrix .)
+    RBRACET         reduce using rule 7 (expression -> matrix .)
+    RPAREN          reduce using rule 7 (expression -> matrix .)
+    LCURLY          reduce using rule 7 (expression -> matrix .)
+    RANGE           reduce using rule 7 (expression -> matrix .)
+
+
+state 26
+
+    (8) expression -> STRING .
+
+    LESSER          reduce using rule 8 (expression -> STRING .)
+    GREATER         reduce using rule 8 (expression -> STRING .)
+    LESSEREQUAL     reduce using rule 8 (expression -> STRING .)
+    GREATEREQUAL    reduce using rule 8 (expression -> STRING .)
+    NOTEQUAL        reduce using rule 8 (expression -> STRING .)
+    EQUAL           reduce using rule 8 (expression -> STRING .)
+    PLUS            reduce using rule 8 (expression -> STRING .)
+    MINUS           reduce using rule 8 (expression -> STRING .)
+    TIMES           reduce using rule 8 (expression -> STRING .)
+    DIVIDE          reduce using rule 8 (expression -> STRING .)
+    DOTPLUS         reduce using rule 8 (expression -> STRING .)
+    DOTMINUS        reduce using rule 8 (expression -> STRING .)
+    DOTTIMES        reduce using rule 8 (expression -> STRING .)
+    DOTDIVIDE       reduce using rule 8 (expression -> STRING .)
+    TRANS           reduce using rule 8 (expression -> STRING .)
+    SEMICOLON       reduce using rule 8 (expression -> STRING .)
+    ID              reduce using rule 8 (expression -> STRING .)
+    IF              reduce using rule 8 (expression -> STRING .)
+    WHILE           reduce using rule 8 (expression -> STRING .)
+    FOR             reduce using rule 8 (expression -> STRING .)
+    BREAK           reduce using rule 8 (expression -> STRING .)
+    CONTINUE        reduce using rule 8 (expression -> STRING .)
+    RETURN          reduce using rule 8 (expression -> STRING .)
+    PRINT           reduce using rule 8 (expression -> STRING .)
+    $end            reduce using rule 8 (expression -> STRING .)
+    RCURLY          reduce using rule 8 (expression -> STRING .)
+    COMMA           reduce using rule 8 (expression -> STRING .)
+    RBRACET         reduce using rule 8 (expression -> STRING .)
+    RPAREN          reduce using rule 8 (expression -> STRING .)
+    LCURLY          reduce using rule 8 (expression -> STRING .)
+    RANGE           reduce using rule 8 (expression -> STRING .)
+
+
+state 27
+
+    (9) expression -> ID .
+    (56) expression -> ID . array
+    (53) array -> . LBRACET list RBRACET
+
+    LESSER          reduce using rule 9 (expression -> ID .)
+    GREATER         reduce using rule 9 (expression -> ID .)
+    LESSEREQUAL     reduce using rule 9 (expression -> ID .)
+    GREATEREQUAL    reduce using rule 9 (expression -> ID .)
+    NOTEQUAL        reduce using rule 9 (expression -> ID .)
+    EQUAL           reduce using rule 9 (expression -> ID .)
+    PLUS            reduce using rule 9 (expression -> ID .)
+    MINUS           reduce using rule 9 (expression -> ID .)
+    TIMES           reduce using rule 9 (expression -> ID .)
+    DIVIDE          reduce using rule 9 (expression -> ID .)
+    DOTPLUS         reduce using rule 9 (expression -> ID .)
+    DOTMINUS        reduce using rule 9 (expression -> ID .)
+    DOTTIMES        reduce using rule 9 (expression -> ID .)
+    DOTDIVIDE       reduce using rule 9 (expression -> ID .)
+    TRANS           reduce using rule 9 (expression -> ID .)
+    SEMICOLON       reduce using rule 9 (expression -> ID .)
+    ID              reduce using rule 9 (expression -> ID .)
+    IF              reduce using rule 9 (expression -> ID .)
+    WHILE           reduce using rule 9 (expression -> ID .)
+    FOR             reduce using rule 9 (expression -> ID .)
+    BREAK           reduce using rule 9 (expression -> ID .)
+    CONTINUE        reduce using rule 9 (expression -> ID .)
+    RETURN          reduce using rule 9 (expression -> ID .)
+    PRINT           reduce using rule 9 (expression -> ID .)
+    $end            reduce using rule 9 (expression -> ID .)
+    RCURLY          reduce using rule 9 (expression -> ID .)
+    COMMA           reduce using rule 9 (expression -> ID .)
+    RBRACET         reduce using rule 9 (expression -> ID .)
+    RPAREN          reduce using rule 9 (expression -> ID .)
+    LCURLY          reduce using rule 9 (expression -> ID .)
+    RANGE           reduce using rule 9 (expression -> ID .)
+    LBRACET         shift and go to state 20
+
+    array                          shift and go to state 70
+
+state 28
+
+    (10) expression -> LPAREN . expression RPAREN
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 71
+    matrix                         shift and go to state 25
+
+state 29
+
+    (26) expression -> MINUS . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 72
+    matrix                         shift and go to state 25
+
+state 30
+
+    (29) matrix -> ZEROS . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 73
+
+
+state 31
+
+    (30) matrix -> ONES . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 74
+
+
+state 32
+
+    (31) matrix -> EYE . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 75
+
+
+state 33
+
+    (50) matrix -> LBRACET . arraylist RBRACET
+    (51) arraylist -> . array
+    (52) arraylist -> . array COMMA arraylist
+    (53) array -> . LBRACET list RBRACET
+
+    LBRACET         shift and go to state 20
+
+    arraylist                      shift and go to state 76
+    array                          shift and go to state 77
+
+state 34
+
+    (44) instruction -> WHILE LBRACET . bool RBRACET instructions_scope
+    (20) bool -> . expression LESSER expression
+    (21) bool -> . expression GREATER expression
+    (22) bool -> . expression LESSEREQUAL expression
+    (23) bool -> . expression GREATEREQUAL expression
+    (24) bool -> . expression NOTEQUAL expression
+    (25) bool -> . expression EQUAL expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    bool                           shift and go to state 78
+    expression                     shift and go to state 22
+    matrix                         shift and go to state 25
+
+state 35
+
+    (45) instruction -> FOR ID . ASSIGN expression RANGE expression instructions_scope
+
+    ASSIGN          shift and go to state 79
+
+
+state 36
+
+    (46) instruction -> BREAK SEMICOLON .
+
+    SEMICOLON       reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    ID              reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    IF              reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    WHILE           reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    FOR             reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    BREAK           reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    CONTINUE        reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    RETURN          reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    PRINT           reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    $end            reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+    RCURLY          reduce using rule 46 (instruction -> BREAK SEMICOLON .)
+
+
+state 37
+
+    (47) instruction -> CONTINUE SEMICOLON .
+
+    SEMICOLON       reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    ID              reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    IF              reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    WHILE           reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    FOR             reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    BREAK           reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    CONTINUE        reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    RETURN          reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    PRINT           reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    $end            reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+    RCURLY          reduce using rule 47 (instruction -> CONTINUE SEMICOLON .)
+
+
+state 38
+
+    (48) instruction -> RETURN SEMICOLON .
+
+    SEMICOLON       reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    ID              reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    IF              reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    WHILE           reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    FOR             reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    BREAK           reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    CONTINUE        reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    RETURN          reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    PRINT           reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    $end            reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+    RCURLY          reduce using rule 48 (instruction -> RETURN SEMICOLON .)
+
+
+state 39
+
+    (49) instruction -> PRINT expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       reduce using rule 49 (instruction -> PRINT expression .)
+    ID              reduce using rule 49 (instruction -> PRINT expression .)
+    IF              reduce using rule 49 (instruction -> PRINT expression .)
+    WHILE           reduce using rule 49 (instruction -> PRINT expression .)
+    FOR             reduce using rule 49 (instruction -> PRINT expression .)
+    BREAK           reduce using rule 49 (instruction -> PRINT expression .)
+    CONTINUE        reduce using rule 49 (instruction -> PRINT expression .)
+    RETURN          reduce using rule 49 (instruction -> PRINT expression .)
+    PRINT           reduce using rule 49 (instruction -> PRINT expression .)
+    $end            reduce using rule 49 (instruction -> PRINT expression .)
+    RCURLY          reduce using rule 49 (instruction -> PRINT expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 40
+
+    (28) instruction -> ID ASSIGN matrix . SEMICOLON
+    (7) expression -> matrix .
+
+  ! shift/reduce conflict for SEMICOLON resolved as shift
+    SEMICOLON       shift and go to state 80
+    TRANS           reduce using rule 7 (expression -> matrix .)
+    PLUS            reduce using rule 7 (expression -> matrix .)
+    MINUS           reduce using rule 7 (expression -> matrix .)
+    TIMES           reduce using rule 7 (expression -> matrix .)
+    DIVIDE          reduce using rule 7 (expression -> matrix .)
+    DOTPLUS         reduce using rule 7 (expression -> matrix .)
+    DOTMINUS        reduce using rule 7 (expression -> matrix .)
+    DOTTIMES        reduce using rule 7 (expression -> matrix .)
+    DOTDIVIDE       reduce using rule 7 (expression -> matrix .)
+
+  ! SEMICOLON       [ reduce using rule 7 (expression -> matrix .) ]
+
+
+state 41
+
+    (32) instruction -> ID ASSIGN expression . SEMICOLON
+    (27) matrix -> expression . TRANS
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+
+    SEMICOLON       shift and go to state 81
+    TRANS           shift and go to state 69
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+
+
+state 42
+
+    (33) instruction -> ID PLUSASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 82
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 43
+
+    (34) instruction -> ID MINUSASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 83
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 44
+
+    (35) instruction -> ID TIMESASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 84
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 45
+
+    (36) instruction -> ID DIVIDEASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 85
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 46
+
+    (37) instruction -> ID array ASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 86
+    matrix                         shift and go to state 25
+
+state 47
+
+    (38) instruction -> ID array PLUSASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 87
+    matrix                         shift and go to state 25
+
+state 48
+
+    (39) instruction -> ID array MINUSASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 88
+    matrix                         shift and go to state 25
+
+state 49
+
+    (40) instruction -> ID array TIMESASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 89
+    matrix                         shift and go to state 25
+
+state 50
+
+    (41) instruction -> ID array DIVIDEASSIGN . expression SEMICOLON
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 90
+    matrix                         shift and go to state 25
+
+state 51
+
+    (53) array -> LBRACET list . RBRACET
+
+    RBRACET         shift and go to state 91
+
+
+state 52
+
+    (54) list -> expression .
+    (55) list -> expression . COMMA list
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    RBRACET         reduce using rule 54 (list -> expression .)
+    COMMA           shift and go to state 92
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 53
+
+    (42) instruction -> IF bool instructions_scope .
+    (43) instruction -> IF bool instructions_scope . ELSE instructions_scope
+
+    SEMICOLON       reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    ID              reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    IF              reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    WHILE           reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    FOR             reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    BREAK           reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    CONTINUE        reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    RETURN          reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    PRINT           reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    $end            reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    RCURLY          reduce using rule 42 (instruction -> IF bool instructions_scope .)
+    ELSE            shift and go to state 93
+
+
+state 54
+
+    (11) instructions_scope -> LCURLY . instructions RCURLY
+    (2) instructions -> . instruction instructions
+    (3) instructions -> .
+    (4) instruction -> . SEMICOLON
+    (28) instruction -> . ID ASSIGN matrix SEMICOLON
+    (32) instruction -> . ID ASSIGN expression SEMICOLON
+    (33) instruction -> . ID PLUSASSIGN expression SEMICOLON
+    (34) instruction -> . ID MINUSASSIGN expression SEMICOLON
+    (35) instruction -> . ID TIMESASSIGN expression SEMICOLON
+    (36) instruction -> . ID DIVIDEASSIGN expression SEMICOLON
+    (37) instruction -> . ID array ASSIGN expression SEMICOLON
+    (38) instruction -> . ID array PLUSASSIGN expression SEMICOLON
+    (39) instruction -> . ID array MINUSASSIGN expression SEMICOLON
+    (40) instruction -> . ID array TIMESASSIGN expression SEMICOLON
+    (41) instruction -> . ID array DIVIDEASSIGN expression SEMICOLON
+    (42) instruction -> . IF bool instructions_scope
+    (43) instruction -> . IF bool instructions_scope ELSE instructions_scope
+    (44) instruction -> . WHILE LBRACET bool RBRACET instructions_scope
+    (45) instruction -> . FOR ID ASSIGN expression RANGE expression instructions_scope
+    (46) instruction -> . BREAK SEMICOLON
+    (47) instruction -> . CONTINUE SEMICOLON
+    (48) instruction -> . RETURN SEMICOLON
+    (49) instruction -> . PRINT expression
+
+    RCURLY          reduce using rule 3 (instructions -> .)
+    SEMICOLON       shift and go to state 4
+    ID              shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    BREAK           shift and go to state 9
+    CONTINUE        shift and go to state 10
+    RETURN          shift and go to state 11
+    PRINT           shift and go to state 12
+
+    instructions                   shift and go to state 94
+    instruction                    shift and go to state 3
+
+state 55
+
+    (20) bool -> expression LESSER . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 95
+    matrix                         shift and go to state 25
+
+state 56
+
+    (21) bool -> expression GREATER . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 96
+    matrix                         shift and go to state 25
+
+state 57
+
+    (22) bool -> expression LESSEREQUAL . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 97
+    matrix                         shift and go to state 25
+
+state 58
+
+    (23) bool -> expression GREATEREQUAL . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 98
+    matrix                         shift and go to state 25
+
+state 59
+
+    (24) bool -> expression NOTEQUAL . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 99
+    matrix                         shift and go to state 25
+
+state 60
+
+    (25) bool -> expression EQUAL . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 100
+    matrix                         shift and go to state 25
+
+state 61
+
+    (12) expression -> expression PLUS . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 101
+    matrix                         shift and go to state 25
+
+state 62
+
+    (13) expression -> expression MINUS . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 102
+    matrix                         shift and go to state 25
+
+state 63
+
+    (14) expression -> expression TIMES . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 103
+    matrix                         shift and go to state 25
+
+state 64
+
+    (15) expression -> expression DIVIDE . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 104
+    matrix                         shift and go to state 25
+
+state 65
+
+    (16) expression -> expression DOTPLUS . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 105
+    matrix                         shift and go to state 25
+
+state 66
+
+    (17) expression -> expression DOTMINUS . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 106
+    matrix                         shift and go to state 25
+
+state 67
+
+    (18) expression -> expression DOTTIMES . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 107
+    matrix                         shift and go to state 25
+
+state 68
+
+    (19) expression -> expression DOTDIVIDE . expression
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 108
+    matrix                         shift and go to state 25
+
+state 69
+
+    (27) matrix -> expression TRANS .
+
+    LESSER          reduce using rule 27 (matrix -> expression TRANS .)
+    GREATER         reduce using rule 27 (matrix -> expression TRANS .)
+    LESSEREQUAL     reduce using rule 27 (matrix -> expression TRANS .)
+    GREATEREQUAL    reduce using rule 27 (matrix -> expression TRANS .)
+    NOTEQUAL        reduce using rule 27 (matrix -> expression TRANS .)
+    EQUAL           reduce using rule 27 (matrix -> expression TRANS .)
+    PLUS            reduce using rule 27 (matrix -> expression TRANS .)
+    MINUS           reduce using rule 27 (matrix -> expression TRANS .)
+    TIMES           reduce using rule 27 (matrix -> expression TRANS .)
+    DIVIDE          reduce using rule 27 (matrix -> expression TRANS .)
+    DOTPLUS         reduce using rule 27 (matrix -> expression TRANS .)
+    DOTMINUS        reduce using rule 27 (matrix -> expression TRANS .)
+    DOTTIMES        reduce using rule 27 (matrix -> expression TRANS .)
+    DOTDIVIDE       reduce using rule 27 (matrix -> expression TRANS .)
+    TRANS           reduce using rule 27 (matrix -> expression TRANS .)
+    SEMICOLON       reduce using rule 27 (matrix -> expression TRANS .)
+    ID              reduce using rule 27 (matrix -> expression TRANS .)
+    IF              reduce using rule 27 (matrix -> expression TRANS .)
+    WHILE           reduce using rule 27 (matrix -> expression TRANS .)
+    FOR             reduce using rule 27 (matrix -> expression TRANS .)
+    BREAK           reduce using rule 27 (matrix -> expression TRANS .)
+    CONTINUE        reduce using rule 27 (matrix -> expression TRANS .)
+    RETURN          reduce using rule 27 (matrix -> expression TRANS .)
+    PRINT           reduce using rule 27 (matrix -> expression TRANS .)
+    $end            reduce using rule 27 (matrix -> expression TRANS .)
+    RCURLY          reduce using rule 27 (matrix -> expression TRANS .)
+    COMMA           reduce using rule 27 (matrix -> expression TRANS .)
+    RBRACET         reduce using rule 27 (matrix -> expression TRANS .)
+    RPAREN          reduce using rule 27 (matrix -> expression TRANS .)
+    LCURLY          reduce using rule 27 (matrix -> expression TRANS .)
+    RANGE           reduce using rule 27 (matrix -> expression TRANS .)
+
+
+state 70
+
+    (56) expression -> ID array .
+
+    LESSER          reduce using rule 56 (expression -> ID array .)
+    GREATER         reduce using rule 56 (expression -> ID array .)
+    LESSEREQUAL     reduce using rule 56 (expression -> ID array .)
+    GREATEREQUAL    reduce using rule 56 (expression -> ID array .)
+    NOTEQUAL        reduce using rule 56 (expression -> ID array .)
+    EQUAL           reduce using rule 56 (expression -> ID array .)
+    PLUS            reduce using rule 56 (expression -> ID array .)
+    MINUS           reduce using rule 56 (expression -> ID array .)
+    TIMES           reduce using rule 56 (expression -> ID array .)
+    DIVIDE          reduce using rule 56 (expression -> ID array .)
+    DOTPLUS         reduce using rule 56 (expression -> ID array .)
+    DOTMINUS        reduce using rule 56 (expression -> ID array .)
+    DOTTIMES        reduce using rule 56 (expression -> ID array .)
+    DOTDIVIDE       reduce using rule 56 (expression -> ID array .)
+    TRANS           reduce using rule 56 (expression -> ID array .)
+    SEMICOLON       reduce using rule 56 (expression -> ID array .)
+    ID              reduce using rule 56 (expression -> ID array .)
+    IF              reduce using rule 56 (expression -> ID array .)
+    WHILE           reduce using rule 56 (expression -> ID array .)
+    FOR             reduce using rule 56 (expression -> ID array .)
+    BREAK           reduce using rule 56 (expression -> ID array .)
+    CONTINUE        reduce using rule 56 (expression -> ID array .)
+    RETURN          reduce using rule 56 (expression -> ID array .)
+    PRINT           reduce using rule 56 (expression -> ID array .)
+    $end            reduce using rule 56 (expression -> ID array .)
+    RCURLY          reduce using rule 56 (expression -> ID array .)
+    COMMA           reduce using rule 56 (expression -> ID array .)
+    RBRACET         reduce using rule 56 (expression -> ID array .)
+    RPAREN          reduce using rule 56 (expression -> ID array .)
+    LCURLY          reduce using rule 56 (expression -> ID array .)
+    RANGE           reduce using rule 56 (expression -> ID array .)
+
+
+state 71
+
+    (10) expression -> LPAREN expression . RPAREN
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    RPAREN          shift and go to state 109
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 72
+
+    (26) expression -> MINUS expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LESSER          reduce using rule 26 (expression -> MINUS expression .)
+    GREATER         reduce using rule 26 (expression -> MINUS expression .)
+    LESSEREQUAL     reduce using rule 26 (expression -> MINUS expression .)
+    GREATEREQUAL    reduce using rule 26 (expression -> MINUS expression .)
+    NOTEQUAL        reduce using rule 26 (expression -> MINUS expression .)
+    EQUAL           reduce using rule 26 (expression -> MINUS expression .)
+    PLUS            reduce using rule 26 (expression -> MINUS expression .)
+    MINUS           reduce using rule 26 (expression -> MINUS expression .)
+    TIMES           reduce using rule 26 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 26 (expression -> MINUS expression .)
+    DOTPLUS         reduce using rule 26 (expression -> MINUS expression .)
+    DOTMINUS        reduce using rule 26 (expression -> MINUS expression .)
+    DOTTIMES        reduce using rule 26 (expression -> MINUS expression .)
+    DOTDIVIDE       reduce using rule 26 (expression -> MINUS expression .)
+    TRANS           reduce using rule 26 (expression -> MINUS expression .)
+    SEMICOLON       reduce using rule 26 (expression -> MINUS expression .)
+    ID              reduce using rule 26 (expression -> MINUS expression .)
+    IF              reduce using rule 26 (expression -> MINUS expression .)
+    WHILE           reduce using rule 26 (expression -> MINUS expression .)
+    FOR             reduce using rule 26 (expression -> MINUS expression .)
+    BREAK           reduce using rule 26 (expression -> MINUS expression .)
+    CONTINUE        reduce using rule 26 (expression -> MINUS expression .)
+    RETURN          reduce using rule 26 (expression -> MINUS expression .)
+    PRINT           reduce using rule 26 (expression -> MINUS expression .)
+    $end            reduce using rule 26 (expression -> MINUS expression .)
+    RCURLY          reduce using rule 26 (expression -> MINUS expression .)
+    COMMA           reduce using rule 26 (expression -> MINUS expression .)
+    RBRACET         reduce using rule 26 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 26 (expression -> MINUS expression .)
+    LCURLY          reduce using rule 26 (expression -> MINUS expression .)
+    RANGE           reduce using rule 26 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 61 ]
+  ! MINUS           [ shift and go to state 62 ]
+  ! TIMES           [ shift and go to state 63 ]
+  ! DIVIDE          [ shift and go to state 64 ]
+  ! DOTPLUS         [ shift and go to state 65 ]
+  ! DOTMINUS        [ shift and go to state 66 ]
+  ! DOTTIMES        [ shift and go to state 67 ]
+  ! DOTDIVIDE       [ shift and go to state 68 ]
+  ! TRANS           [ shift and go to state 69 ]
+
+
+state 73
+
+    (29) matrix -> ZEROS LPAREN . expression RPAREN
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 110
+    matrix                         shift and go to state 25
+
+state 74
+
+    (30) matrix -> ONES LPAREN . expression RPAREN
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 111
+    matrix                         shift and go to state 25
+
+state 75
+
+    (31) matrix -> EYE LPAREN . expression RPAREN
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 112
+    matrix                         shift and go to state 25
+
+state 76
+
+    (50) matrix -> LBRACET arraylist . RBRACET
+
+    RBRACET         shift and go to state 113
+
+
+state 77
+
+    (51) arraylist -> array .
+    (52) arraylist -> array . COMMA arraylist
+
+    RBRACET         reduce using rule 51 (arraylist -> array .)
+    COMMA           shift and go to state 114
+
+
+state 78
+
+    (44) instruction -> WHILE LBRACET bool . RBRACET instructions_scope
+
+    RBRACET         shift and go to state 115
+
+
+state 79
+
+    (45) instruction -> FOR ID ASSIGN . expression RANGE expression instructions_scope
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 116
+    matrix                         shift and go to state 25
+
+state 80
+
+    (28) instruction -> ID ASSIGN matrix SEMICOLON .
+
+    SEMICOLON       reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    ID              reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    IF              reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    WHILE           reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    FOR             reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    BREAK           reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    CONTINUE        reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    RETURN          reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    PRINT           reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    $end            reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+    RCURLY          reduce using rule 28 (instruction -> ID ASSIGN matrix SEMICOLON .)
+
+
+state 81
+
+    (32) instruction -> ID ASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    ID              reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    IF              reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    $end            reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 32 (instruction -> ID ASSIGN expression SEMICOLON .)
+
+
+state 82
+
+    (33) instruction -> ID PLUSASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    ID              reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    IF              reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    $end            reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 33 (instruction -> ID PLUSASSIGN expression SEMICOLON .)
+
+
+state 83
+
+    (34) instruction -> ID MINUSASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    ID              reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    IF              reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    $end            reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 34 (instruction -> ID MINUSASSIGN expression SEMICOLON .)
+
+
+state 84
+
+    (35) instruction -> ID TIMESASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    ID              reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    IF              reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    $end            reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 35 (instruction -> ID TIMESASSIGN expression SEMICOLON .)
+
+
+state 85
+
+    (36) instruction -> ID DIVIDEASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    ID              reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    IF              reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    $end            reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 36 (instruction -> ID DIVIDEASSIGN expression SEMICOLON .)
+
+
+state 86
+
+    (37) instruction -> ID array ASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 117
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 87
+
+    (38) instruction -> ID array PLUSASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 118
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 88
+
+    (39) instruction -> ID array MINUSASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 119
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 89
+
+    (40) instruction -> ID array TIMESASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 120
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 90
+
+    (41) instruction -> ID array DIVIDEASSIGN expression . SEMICOLON
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    SEMICOLON       shift and go to state 121
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 91
+
+    (53) array -> LBRACET list RBRACET .
+
+    ASSIGN          reduce using rule 53 (array -> LBRACET list RBRACET .)
+    PLUSASSIGN      reduce using rule 53 (array -> LBRACET list RBRACET .)
+    MINUSASSIGN     reduce using rule 53 (array -> LBRACET list RBRACET .)
+    TIMESASSIGN     reduce using rule 53 (array -> LBRACET list RBRACET .)
+    DIVIDEASSIGN    reduce using rule 53 (array -> LBRACET list RBRACET .)
+    LESSER          reduce using rule 53 (array -> LBRACET list RBRACET .)
+    GREATER         reduce using rule 53 (array -> LBRACET list RBRACET .)
+    LESSEREQUAL     reduce using rule 53 (array -> LBRACET list RBRACET .)
+    GREATEREQUAL    reduce using rule 53 (array -> LBRACET list RBRACET .)
+    NOTEQUAL        reduce using rule 53 (array -> LBRACET list RBRACET .)
+    EQUAL           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    PLUS            reduce using rule 53 (array -> LBRACET list RBRACET .)
+    MINUS           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    TIMES           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    DIVIDE          reduce using rule 53 (array -> LBRACET list RBRACET .)
+    DOTPLUS         reduce using rule 53 (array -> LBRACET list RBRACET .)
+    DOTMINUS        reduce using rule 53 (array -> LBRACET list RBRACET .)
+    DOTTIMES        reduce using rule 53 (array -> LBRACET list RBRACET .)
+    DOTDIVIDE       reduce using rule 53 (array -> LBRACET list RBRACET .)
+    TRANS           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    SEMICOLON       reduce using rule 53 (array -> LBRACET list RBRACET .)
+    ID              reduce using rule 53 (array -> LBRACET list RBRACET .)
+    IF              reduce using rule 53 (array -> LBRACET list RBRACET .)
+    WHILE           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    FOR             reduce using rule 53 (array -> LBRACET list RBRACET .)
+    BREAK           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    CONTINUE        reduce using rule 53 (array -> LBRACET list RBRACET .)
+    RETURN          reduce using rule 53 (array -> LBRACET list RBRACET .)
+    PRINT           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    $end            reduce using rule 53 (array -> LBRACET list RBRACET .)
+    RCURLY          reduce using rule 53 (array -> LBRACET list RBRACET .)
+    COMMA           reduce using rule 53 (array -> LBRACET list RBRACET .)
+    RBRACET         reduce using rule 53 (array -> LBRACET list RBRACET .)
+    RPAREN          reduce using rule 53 (array -> LBRACET list RBRACET .)
+    LCURLY          reduce using rule 53 (array -> LBRACET list RBRACET .)
+    RANGE           reduce using rule 53 (array -> LBRACET list RBRACET .)
+
+
+state 92
+
+    (55) list -> expression COMMA . list
+    (54) list -> . expression
+    (55) list -> . expression COMMA list
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 52
+    list                           shift and go to state 122
+    matrix                         shift and go to state 25
+
+state 93
+
+    (43) instruction -> IF bool instructions_scope ELSE . instructions_scope
+    (11) instructions_scope -> . LCURLY instructions RCURLY
+
+    LCURLY          shift and go to state 54
+
+    instructions_scope             shift and go to state 123
+
+state 94
+
+    (11) instructions_scope -> LCURLY instructions . RCURLY
+
+    RCURLY          shift and go to state 124
+
+
+state 95
+
+    (20) bool -> expression LESSER expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LCURLY          reduce using rule 20 (bool -> expression LESSER expression .)
+    RBRACET         reduce using rule 20 (bool -> expression LESSER expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 96
+
+    (21) bool -> expression GREATER expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LCURLY          reduce using rule 21 (bool -> expression GREATER expression .)
+    RBRACET         reduce using rule 21 (bool -> expression GREATER expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 97
+
+    (22) bool -> expression LESSEREQUAL expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LCURLY          reduce using rule 22 (bool -> expression LESSEREQUAL expression .)
+    RBRACET         reduce using rule 22 (bool -> expression LESSEREQUAL expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 98
+
+    (23) bool -> expression GREATEREQUAL expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LCURLY          reduce using rule 23 (bool -> expression GREATEREQUAL expression .)
+    RBRACET         reduce using rule 23 (bool -> expression GREATEREQUAL expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 99
+
+    (24) bool -> expression NOTEQUAL expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LCURLY          reduce using rule 24 (bool -> expression NOTEQUAL expression .)
+    RBRACET         reduce using rule 24 (bool -> expression NOTEQUAL expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 100
+
+    (25) bool -> expression EQUAL expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LCURLY          reduce using rule 25 (bool -> expression EQUAL expression .)
+    RBRACET         reduce using rule 25 (bool -> expression EQUAL expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 101
+
+    (12) expression -> expression PLUS expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LESSER          reduce using rule 12 (expression -> expression PLUS expression .)
+    GREATER         reduce using rule 12 (expression -> expression PLUS expression .)
+    LESSEREQUAL     reduce using rule 12 (expression -> expression PLUS expression .)
+    GREATEREQUAL    reduce using rule 12 (expression -> expression PLUS expression .)
+    NOTEQUAL        reduce using rule 12 (expression -> expression PLUS expression .)
+    EQUAL           reduce using rule 12 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 12 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 12 (expression -> expression PLUS expression .)
+    DOTPLUS         reduce using rule 12 (expression -> expression PLUS expression .)
+    DOTMINUS        reduce using rule 12 (expression -> expression PLUS expression .)
+    DOTTIMES        reduce using rule 12 (expression -> expression PLUS expression .)
+    DOTDIVIDE       reduce using rule 12 (expression -> expression PLUS expression .)
+    TRANS           reduce using rule 12 (expression -> expression PLUS expression .)
+    SEMICOLON       reduce using rule 12 (expression -> expression PLUS expression .)
+    ID              reduce using rule 12 (expression -> expression PLUS expression .)
+    IF              reduce using rule 12 (expression -> expression PLUS expression .)
+    WHILE           reduce using rule 12 (expression -> expression PLUS expression .)
+    FOR             reduce using rule 12 (expression -> expression PLUS expression .)
+    BREAK           reduce using rule 12 (expression -> expression PLUS expression .)
+    CONTINUE        reduce using rule 12 (expression -> expression PLUS expression .)
+    RETURN          reduce using rule 12 (expression -> expression PLUS expression .)
+    PRINT           reduce using rule 12 (expression -> expression PLUS expression .)
+    $end            reduce using rule 12 (expression -> expression PLUS expression .)
+    RCURLY          reduce using rule 12 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 12 (expression -> expression PLUS expression .)
+    RBRACET         reduce using rule 12 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 12 (expression -> expression PLUS expression .)
+    LCURLY          reduce using rule 12 (expression -> expression PLUS expression .)
+    RANGE           reduce using rule 12 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+
+  ! TIMES           [ reduce using rule 12 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 12 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 61 ]
+  ! MINUS           [ shift and go to state 62 ]
+  ! DOTPLUS         [ shift and go to state 65 ]
+  ! DOTMINUS        [ shift and go to state 66 ]
+  ! DOTTIMES        [ shift and go to state 67 ]
+  ! DOTDIVIDE       [ shift and go to state 68 ]
+  ! TRANS           [ shift and go to state 69 ]
+
+
+state 102
+
+    (13) expression -> expression MINUS expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LESSER          reduce using rule 13 (expression -> expression MINUS expression .)
+    GREATER         reduce using rule 13 (expression -> expression MINUS expression .)
+    LESSEREQUAL     reduce using rule 13 (expression -> expression MINUS expression .)
+    GREATEREQUAL    reduce using rule 13 (expression -> expression MINUS expression .)
+    NOTEQUAL        reduce using rule 13 (expression -> expression MINUS expression .)
+    EQUAL           reduce using rule 13 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 13 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 13 (expression -> expression MINUS expression .)
+    DOTPLUS         reduce using rule 13 (expression -> expression MINUS expression .)
+    DOTMINUS        reduce using rule 13 (expression -> expression MINUS expression .)
+    DOTTIMES        reduce using rule 13 (expression -> expression MINUS expression .)
+    DOTDIVIDE       reduce using rule 13 (expression -> expression MINUS expression .)
+    TRANS           reduce using rule 13 (expression -> expression MINUS expression .)
+    SEMICOLON       reduce using rule 13 (expression -> expression MINUS expression .)
+    ID              reduce using rule 13 (expression -> expression MINUS expression .)
+    IF              reduce using rule 13 (expression -> expression MINUS expression .)
+    WHILE           reduce using rule 13 (expression -> expression MINUS expression .)
+    FOR             reduce using rule 13 (expression -> expression MINUS expression .)
+    BREAK           reduce using rule 13 (expression -> expression MINUS expression .)
+    CONTINUE        reduce using rule 13 (expression -> expression MINUS expression .)
+    RETURN          reduce using rule 13 (expression -> expression MINUS expression .)
+    PRINT           reduce using rule 13 (expression -> expression MINUS expression .)
+    $end            reduce using rule 13 (expression -> expression MINUS expression .)
+    RCURLY          reduce using rule 13 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 13 (expression -> expression MINUS expression .)
+    RBRACET         reduce using rule 13 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 13 (expression -> expression MINUS expression .)
+    LCURLY          reduce using rule 13 (expression -> expression MINUS expression .)
+    RANGE           reduce using rule 13 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+
+  ! TIMES           [ reduce using rule 13 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 13 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 61 ]
+  ! MINUS           [ shift and go to state 62 ]
+  ! DOTPLUS         [ shift and go to state 65 ]
+  ! DOTMINUS        [ shift and go to state 66 ]
+  ! DOTTIMES        [ shift and go to state 67 ]
+  ! DOTDIVIDE       [ shift and go to state 68 ]
+  ! TRANS           [ shift and go to state 69 ]
+
+
+state 103
+
+    (14) expression -> expression TIMES expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LESSER          reduce using rule 14 (expression -> expression TIMES expression .)
+    GREATER         reduce using rule 14 (expression -> expression TIMES expression .)
+    LESSEREQUAL     reduce using rule 14 (expression -> expression TIMES expression .)
+    GREATEREQUAL    reduce using rule 14 (expression -> expression TIMES expression .)
+    NOTEQUAL        reduce using rule 14 (expression -> expression TIMES expression .)
+    EQUAL           reduce using rule 14 (expression -> expression TIMES expression .)
+    PLUS            reduce using rule 14 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 14 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 14 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 14 (expression -> expression TIMES expression .)
+    DOTPLUS         reduce using rule 14 (expression -> expression TIMES expression .)
+    DOTMINUS        reduce using rule 14 (expression -> expression TIMES expression .)
+    DOTTIMES        reduce using rule 14 (expression -> expression TIMES expression .)
+    DOTDIVIDE       reduce using rule 14 (expression -> expression TIMES expression .)
+    TRANS           reduce using rule 14 (expression -> expression TIMES expression .)
+    SEMICOLON       reduce using rule 14 (expression -> expression TIMES expression .)
+    ID              reduce using rule 14 (expression -> expression TIMES expression .)
+    IF              reduce using rule 14 (expression -> expression TIMES expression .)
+    WHILE           reduce using rule 14 (expression -> expression TIMES expression .)
+    FOR             reduce using rule 14 (expression -> expression TIMES expression .)
+    BREAK           reduce using rule 14 (expression -> expression TIMES expression .)
+    CONTINUE        reduce using rule 14 (expression -> expression TIMES expression .)
+    RETURN          reduce using rule 14 (expression -> expression TIMES expression .)
+    PRINT           reduce using rule 14 (expression -> expression TIMES expression .)
+    $end            reduce using rule 14 (expression -> expression TIMES expression .)
+    RCURLY          reduce using rule 14 (expression -> expression TIMES expression .)
+    COMMA           reduce using rule 14 (expression -> expression TIMES expression .)
+    RBRACET         reduce using rule 14 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 14 (expression -> expression TIMES expression .)
+    LCURLY          reduce using rule 14 (expression -> expression TIMES expression .)
+    RANGE           reduce using rule 14 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 61 ]
+  ! MINUS           [ shift and go to state 62 ]
+  ! TIMES           [ shift and go to state 63 ]
+  ! DIVIDE          [ shift and go to state 64 ]
+  ! DOTPLUS         [ shift and go to state 65 ]
+  ! DOTMINUS        [ shift and go to state 66 ]
+  ! DOTTIMES        [ shift and go to state 67 ]
+  ! DOTDIVIDE       [ shift and go to state 68 ]
+  ! TRANS           [ shift and go to state 69 ]
+
+
+state 104
+
+    (15) expression -> expression DIVIDE expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    LESSER          reduce using rule 15 (expression -> expression DIVIDE expression .)
+    GREATER         reduce using rule 15 (expression -> expression DIVIDE expression .)
+    LESSEREQUAL     reduce using rule 15 (expression -> expression DIVIDE expression .)
+    GREATEREQUAL    reduce using rule 15 (expression -> expression DIVIDE expression .)
+    NOTEQUAL        reduce using rule 15 (expression -> expression DIVIDE expression .)
+    EQUAL           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 15 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 15 (expression -> expression DIVIDE expression .)
+    DOTPLUS         reduce using rule 15 (expression -> expression DIVIDE expression .)
+    DOTMINUS        reduce using rule 15 (expression -> expression DIVIDE expression .)
+    DOTTIMES        reduce using rule 15 (expression -> expression DIVIDE expression .)
+    DOTDIVIDE       reduce using rule 15 (expression -> expression DIVIDE expression .)
+    TRANS           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    SEMICOLON       reduce using rule 15 (expression -> expression DIVIDE expression .)
+    ID              reduce using rule 15 (expression -> expression DIVIDE expression .)
+    IF              reduce using rule 15 (expression -> expression DIVIDE expression .)
+    WHILE           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    FOR             reduce using rule 15 (expression -> expression DIVIDE expression .)
+    BREAK           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    CONTINUE        reduce using rule 15 (expression -> expression DIVIDE expression .)
+    RETURN          reduce using rule 15 (expression -> expression DIVIDE expression .)
+    PRINT           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 15 (expression -> expression DIVIDE expression .)
+    RCURLY          reduce using rule 15 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    RBRACET         reduce using rule 15 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 15 (expression -> expression DIVIDE expression .)
+    LCURLY          reduce using rule 15 (expression -> expression DIVIDE expression .)
+    RANGE           reduce using rule 15 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 61 ]
+  ! MINUS           [ shift and go to state 62 ]
+  ! TIMES           [ shift and go to state 63 ]
+  ! DIVIDE          [ shift and go to state 64 ]
+  ! DOTPLUS         [ shift and go to state 65 ]
+  ! DOTMINUS        [ shift and go to state 66 ]
+  ! DOTTIMES        [ shift and go to state 67 ]
+  ! DOTDIVIDE       [ shift and go to state 68 ]
+  ! TRANS           [ shift and go to state 69 ]
+
+
+state 105
+
+    (16) expression -> expression DOTPLUS expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for DOTPLUS resolved as shift
+  ! shift/reduce conflict for DOTMINUS resolved as shift
+  ! shift/reduce conflict for DOTTIMES resolved as shift
+  ! shift/reduce conflict for DOTDIVIDE resolved as shift
+  ! shift/reduce conflict for TRANS resolved as shift
+    LESSER          reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    GREATER         reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    LESSEREQUAL     reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    GREATEREQUAL    reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    NOTEQUAL        reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    EQUAL           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    SEMICOLON       reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    ID              reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    IF              reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    WHILE           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    FOR             reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    BREAK           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    CONTINUE        reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    RETURN          reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    PRINT           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    $end            reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    RCURLY          reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    COMMA           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    RBRACET         reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    RPAREN          reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    LCURLY          reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    RANGE           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+  ! PLUS            [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! MINUS           [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! TIMES           [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! DOTPLUS         [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! DOTMINUS        [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! DOTTIMES        [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! TRANS           [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+
+
+state 106
+
+    (17) expression -> expression DOTMINUS expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for DOTPLUS resolved as shift
+  ! shift/reduce conflict for DOTMINUS resolved as shift
+  ! shift/reduce conflict for DOTTIMES resolved as shift
+  ! shift/reduce conflict for DOTDIVIDE resolved as shift
+  ! shift/reduce conflict for TRANS resolved as shift
+    LESSER          reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    GREATER         reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    LESSEREQUAL     reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    GREATEREQUAL    reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    NOTEQUAL        reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    EQUAL           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    SEMICOLON       reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    ID              reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    IF              reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    WHILE           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    FOR             reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    BREAK           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    CONTINUE        reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    RETURN          reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    PRINT           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    $end            reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    RCURLY          reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    COMMA           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    RBRACET         reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    RPAREN          reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    LCURLY          reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    RANGE           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+  ! PLUS            [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! MINUS           [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! TIMES           [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! DOTPLUS         [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! DOTMINUS        [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! DOTTIMES        [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! TRANS           [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+
+
+state 107
+
+    (18) expression -> expression DOTTIMES expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for DOTPLUS resolved as shift
+  ! shift/reduce conflict for DOTMINUS resolved as shift
+  ! shift/reduce conflict for DOTTIMES resolved as shift
+  ! shift/reduce conflict for DOTDIVIDE resolved as shift
+  ! shift/reduce conflict for TRANS resolved as shift
+    LESSER          reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    GREATER         reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    LESSEREQUAL     reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    GREATEREQUAL    reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    NOTEQUAL        reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    EQUAL           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    SEMICOLON       reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    ID              reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    IF              reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    WHILE           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    FOR             reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    BREAK           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    CONTINUE        reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    RETURN          reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    PRINT           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    $end            reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    RCURLY          reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    COMMA           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    RBRACET         reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    RPAREN          reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    LCURLY          reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    RANGE           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+  ! PLUS            [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! MINUS           [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! TIMES           [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! DIVIDE          [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! DOTPLUS         [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! DOTMINUS        [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! DOTTIMES        [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! TRANS           [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+
+
+state 108
+
+    (19) expression -> expression DOTDIVIDE expression .
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for DOTPLUS resolved as shift
+  ! shift/reduce conflict for DOTMINUS resolved as shift
+  ! shift/reduce conflict for DOTTIMES resolved as shift
+  ! shift/reduce conflict for DOTDIVIDE resolved as shift
+  ! shift/reduce conflict for TRANS resolved as shift
+    LESSER          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    GREATER         reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    LESSEREQUAL     reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    GREATEREQUAL    reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    NOTEQUAL        reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    EQUAL           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    SEMICOLON       reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    ID              reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    IF              reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    WHILE           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    FOR             reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    BREAK           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    CONTINUE        reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    RETURN          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    PRINT           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    $end            reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    RCURLY          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    COMMA           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    RBRACET         reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    RPAREN          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    LCURLY          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    RANGE           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+  ! PLUS            [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! MINUS           [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! TIMES           [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! DIVIDE          [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! DOTPLUS         [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! DOTMINUS        [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! DOTTIMES        [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! TRANS           [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+
+
+state 109
+
+    (10) expression -> LPAREN expression RPAREN .
+
+    LESSER          reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    GREATER         reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    LESSEREQUAL     reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    GREATEREQUAL    reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    DOTPLUS         reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    DOTMINUS        reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    DOTTIMES        reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    DOTDIVIDE       reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    TRANS           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    ID              reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    IF              reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    WHILE           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    FOR             reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    BREAK           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    CONTINUE        reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    RETURN          reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    PRINT           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    RCURLY          reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    COMMA           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    RBRACET         reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    LCURLY          reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+    RANGE           reduce using rule 10 (expression -> LPAREN expression RPAREN .)
+
+
+state 110
+
+    (29) matrix -> ZEROS LPAREN expression . RPAREN
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    RPAREN          shift and go to state 125
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 111
+
+    (30) matrix -> ONES LPAREN expression . RPAREN
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    RPAREN          shift and go to state 126
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 112
+
+    (31) matrix -> EYE LPAREN expression . RPAREN
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    RPAREN          shift and go to state 127
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 113
+
+    (50) matrix -> LBRACET arraylist RBRACET .
+
+    LESSER          reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    GREATER         reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    LESSEREQUAL     reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    GREATEREQUAL    reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    NOTEQUAL        reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    EQUAL           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    PLUS            reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    MINUS           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    TIMES           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    DIVIDE          reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    DOTPLUS         reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    DOTMINUS        reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    DOTTIMES        reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    DOTDIVIDE       reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    TRANS           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    SEMICOLON       reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    ID              reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    IF              reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    WHILE           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    FOR             reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    BREAK           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    CONTINUE        reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    RETURN          reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    PRINT           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    $end            reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    RCURLY          reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    COMMA           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    RBRACET         reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    RPAREN          reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    LCURLY          reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+    RANGE           reduce using rule 50 (matrix -> LBRACET arraylist RBRACET .)
+
+
+state 114
+
+    (52) arraylist -> array COMMA . arraylist
+    (51) arraylist -> . array
+    (52) arraylist -> . array COMMA arraylist
+    (53) array -> . LBRACET list RBRACET
+
+    LBRACET         shift and go to state 20
+
+    array                          shift and go to state 77
+    arraylist                      shift and go to state 128
+
+state 115
+
+    (44) instruction -> WHILE LBRACET bool RBRACET . instructions_scope
+    (11) instructions_scope -> . LCURLY instructions RCURLY
+
+    LCURLY          shift and go to state 54
+
+    instructions_scope             shift and go to state 129
+
+state 116
+
+    (45) instruction -> FOR ID ASSIGN expression . RANGE expression instructions_scope
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+
+    RANGE           shift and go to state 130
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+
+
+state 117
+
+    (37) instruction -> ID array ASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    ID              reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    IF              reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    $end            reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 37 (instruction -> ID array ASSIGN expression SEMICOLON .)
+
+
+state 118
+
+    (38) instruction -> ID array PLUSASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    ID              reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    IF              reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    $end            reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 38 (instruction -> ID array PLUSASSIGN expression SEMICOLON .)
+
+
+state 119
+
+    (39) instruction -> ID array MINUSASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    ID              reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    IF              reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    $end            reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 39 (instruction -> ID array MINUSASSIGN expression SEMICOLON .)
+
+
+state 120
+
+    (40) instruction -> ID array TIMESASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    ID              reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    IF              reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    $end            reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 40 (instruction -> ID array TIMESASSIGN expression SEMICOLON .)
+
+
+state 121
+
+    (41) instruction -> ID array DIVIDEASSIGN expression SEMICOLON .
+
+    SEMICOLON       reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    ID              reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    IF              reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    BREAK           reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    CONTINUE        reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    PRINT           reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    $end            reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+    RCURLY          reduce using rule 41 (instruction -> ID array DIVIDEASSIGN expression SEMICOLON .)
+
+
+state 122
+
+    (55) list -> expression COMMA list .
+
+    RBRACET         reduce using rule 55 (list -> expression COMMA list .)
+
+
+state 123
+
+    (43) instruction -> IF bool instructions_scope ELSE instructions_scope .
+
+    SEMICOLON       reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    ID              reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    IF              reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    WHILE           reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    FOR             reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    BREAK           reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    CONTINUE        reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    RETURN          reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    PRINT           reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    $end            reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+    RCURLY          reduce using rule 43 (instruction -> IF bool instructions_scope ELSE instructions_scope .)
+
+
+state 124
+
+    (11) instructions_scope -> LCURLY instructions RCURLY .
+
+    ELSE            reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    SEMICOLON       reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    ID              reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    IF              reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    WHILE           reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    FOR             reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    BREAK           reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    CONTINUE        reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    RETURN          reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    PRINT           reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    $end            reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+    RCURLY          reduce using rule 11 (instructions_scope -> LCURLY instructions RCURLY .)
+
+
+state 125
+
+    (29) matrix -> ZEROS LPAREN expression RPAREN .
+
+    LESSER          reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    GREATER         reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    LESSEREQUAL     reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    GREATEREQUAL    reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    PLUS            reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    MINUS           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    TIMES           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    DOTPLUS         reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    DOTMINUS        reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    DOTTIMES        reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    DOTDIVIDE       reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    TRANS           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    ID              reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    IF              reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    WHILE           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    FOR             reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    BREAK           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    CONTINUE        reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    RETURN          reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    PRINT           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    $end            reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    RCURLY          reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    COMMA           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    RBRACET         reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    LCURLY          reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+    RANGE           reduce using rule 29 (matrix -> ZEROS LPAREN expression RPAREN .)
+
+
+state 126
+
+    (30) matrix -> ONES LPAREN expression RPAREN .
+
+    LESSER          reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    GREATER         reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    LESSEREQUAL     reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    GREATEREQUAL    reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    PLUS            reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    MINUS           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    TIMES           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    DOTPLUS         reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    DOTMINUS        reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    DOTTIMES        reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    DOTDIVIDE       reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    TRANS           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    ID              reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    IF              reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    WHILE           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    FOR             reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    BREAK           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    CONTINUE        reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    RETURN          reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    PRINT           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    $end            reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    RCURLY          reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    COMMA           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    RBRACET         reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    LCURLY          reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+    RANGE           reduce using rule 30 (matrix -> ONES LPAREN expression RPAREN .)
+
+
+state 127
+
+    (31) matrix -> EYE LPAREN expression RPAREN .
+
+    LESSER          reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    GREATER         reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    LESSEREQUAL     reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    GREATEREQUAL    reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    PLUS            reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    MINUS           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    TIMES           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    DOTPLUS         reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    DOTMINUS        reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    DOTTIMES        reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    DOTDIVIDE       reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    TRANS           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    ID              reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    IF              reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    WHILE           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    FOR             reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    BREAK           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    CONTINUE        reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    RETURN          reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    PRINT           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    $end            reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    RCURLY          reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    COMMA           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    RBRACET         reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    LCURLY          reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+    RANGE           reduce using rule 31 (matrix -> EYE LPAREN expression RPAREN .)
+
+
+state 128
+
+    (52) arraylist -> array COMMA arraylist .
+
+    RBRACET         reduce using rule 52 (arraylist -> array COMMA arraylist .)
+
+
+state 129
+
+    (44) instruction -> WHILE LBRACET bool RBRACET instructions_scope .
+
+    SEMICOLON       reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    ID              reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    IF              reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    WHILE           reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    FOR             reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    BREAK           reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    CONTINUE        reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    RETURN          reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    PRINT           reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    $end            reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+    RCURLY          reduce using rule 44 (instruction -> WHILE LBRACET bool RBRACET instructions_scope .)
+
+
+state 130
+
+    (45) instruction -> FOR ID ASSIGN expression RANGE . expression instructions_scope
+    (5) expression -> . INTEGER
+    (6) expression -> . FLOAT
+    (7) expression -> . matrix
+    (8) expression -> . STRING
+    (9) expression -> . ID
+    (10) expression -> . LPAREN expression RPAREN
+    (12) expression -> . expression PLUS expression
+    (13) expression -> . expression MINUS expression
+    (14) expression -> . expression TIMES expression
+    (15) expression -> . expression DIVIDE expression
+    (16) expression -> . expression DOTPLUS expression
+    (17) expression -> . expression DOTMINUS expression
+    (18) expression -> . expression DOTTIMES expression
+    (19) expression -> . expression DOTDIVIDE expression
+    (26) expression -> . MINUS expression
+    (56) expression -> . ID array
+    (27) matrix -> . expression TRANS
+    (29) matrix -> . ZEROS LPAREN expression RPAREN
+    (30) matrix -> . ONES LPAREN expression RPAREN
+    (31) matrix -> . EYE LPAREN expression RPAREN
+    (50) matrix -> . LBRACET arraylist RBRACET
+
+    INTEGER         shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 26
+    ID              shift and go to state 27
+    LPAREN          shift and go to state 28
+    MINUS           shift and go to state 29
+    ZEROS           shift and go to state 30
+    ONES            shift and go to state 31
+    EYE             shift and go to state 32
+    LBRACET         shift and go to state 33
+
+    expression                     shift and go to state 131
+    matrix                         shift and go to state 25
+
+state 131
+
+    (45) instruction -> FOR ID ASSIGN expression RANGE expression . instructions_scope
+    (12) expression -> expression . PLUS expression
+    (13) expression -> expression . MINUS expression
+    (14) expression -> expression . TIMES expression
+    (15) expression -> expression . DIVIDE expression
+    (16) expression -> expression . DOTPLUS expression
+    (17) expression -> expression . DOTMINUS expression
+    (18) expression -> expression . DOTTIMES expression
+    (19) expression -> expression . DOTDIVIDE expression
+    (27) matrix -> expression . TRANS
+    (11) instructions_scope -> . LCURLY instructions RCURLY
+
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
+    DOTPLUS         shift and go to state 65
+    DOTMINUS        shift and go to state 66
+    DOTTIMES        shift and go to state 67
+    DOTDIVIDE       shift and go to state 68
+    TRANS           shift and go to state 69
+    LCURLY          shift and go to state 54
+
+    instructions_scope             shift and go to state 132
+
+state 132
+
+    (45) instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .
+
+    SEMICOLON       reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    ID              reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    IF              reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    WHILE           reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    FOR             reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    BREAK           reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    CONTINUE        reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    RETURN          reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    PRINT           reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    $end            reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+    RCURLY          reduce using rule 45 (instruction -> FOR ID ASSIGN expression RANGE expression instructions_scope .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for SEMICOLON in state 40 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 105 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 105 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 105 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 105 resolved as shift
+WARNING: shift/reduce conflict for DOTPLUS in state 105 resolved as shift
+WARNING: shift/reduce conflict for DOTMINUS in state 105 resolved as shift
+WARNING: shift/reduce conflict for DOTTIMES in state 105 resolved as shift
+WARNING: shift/reduce conflict for DOTDIVIDE in state 105 resolved as shift
+WARNING: shift/reduce conflict for TRANS in state 105 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 106 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 106 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 106 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 106 resolved as shift
+WARNING: shift/reduce conflict for DOTPLUS in state 106 resolved as shift
+WARNING: shift/reduce conflict for DOTMINUS in state 106 resolved as shift
+WARNING: shift/reduce conflict for DOTTIMES in state 106 resolved as shift
+WARNING: shift/reduce conflict for DOTDIVIDE in state 106 resolved as shift
+WARNING: shift/reduce conflict for TRANS in state 106 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 107 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 107 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 107 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 107 resolved as shift
+WARNING: shift/reduce conflict for DOTPLUS in state 107 resolved as shift
+WARNING: shift/reduce conflict for DOTMINUS in state 107 resolved as shift
+WARNING: shift/reduce conflict for DOTTIMES in state 107 resolved as shift
+WARNING: shift/reduce conflict for DOTDIVIDE in state 107 resolved as shift
+WARNING: shift/reduce conflict for TRANS in state 107 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 108 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 108 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 108 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 108 resolved as shift
+WARNING: shift/reduce conflict for DOTPLUS in state 108 resolved as shift
+WARNING: shift/reduce conflict for DOTMINUS in state 108 resolved as shift
+WARNING: shift/reduce conflict for DOTTIMES in state 108 resolved as shift
+WARNING: shift/reduce conflict for DOTDIVIDE in state 108 resolved as shift
+WARNING: shift/reduce conflict for TRANS in state 108 resolved as shift
