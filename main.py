@@ -5,7 +5,7 @@ import Mparser
 if __name__ == '__main__':
 
     try:
-        filename = sys.argv[1] if len(sys.argv) > 1 else "example2.m"
+        filename = sys.argv[1] if len(sys.argv) > 1 else "Example3.m"
         file = open(filename, "r")
     except IOError:
         print("Cannot open {0} file".format(filename))
@@ -13,4 +13,4 @@ if __name__ == '__main__':
 
     parser = Mparser.parser
     text = file.read()
-    parser.parse(text, lexer=scanner.lexer)
+    parser.parse(text, lexer=scanner.lexer, debug=1)
