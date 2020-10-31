@@ -1,6 +1,8 @@
 import scanner
 import ply.yacc as yacc
 
+from mast import Mast
+
 tokens = scanner.tokens
 
 precedence = (
@@ -21,17 +23,19 @@ def p_error(p):
 
 
 names = {}
+instr_list = []
 
 
 def p_program(t):
     """program : instructions"""
-    pass
+    t[0] = instr_list
 
 
 def p_instructions(t):
-    """instructions : instruction instructions
+    """instructions : instructions instruction
                 | """
-    pass
+    if len(t) > 1:
+        instr_list.append(t[2])
 
 
 def p_empty_instruction(t):
@@ -45,7 +49,7 @@ def p_expression_value(t):
                   | matrix
                   | STRING
                   | bool"""
-    # t[0] = t[1]
+    t[0] = t[1]
     pass
 
 
@@ -154,8 +158,8 @@ def p_special_instruction(t):
 
 def p_print(t):
     """instruction : PRINT list SEMICOLON"""
-    #print(t[2])
-    pass
+    t[0] = Mast(action='print', params=t[2])
+
 
 
 def p_matrix(t):
@@ -165,7 +169,7 @@ def p_matrix(t):
 
 def p_arraylist(t):
     """arraylist : array
-                 | array COMMA arraylist"""
+                 | arraylist COMMA array"""
     pass
 
 
@@ -176,8 +180,11 @@ def p_array(t):
 
 def p_list(t):
     """list : expression
-            | expression COMMA list"""
-    pass
+            | list COMMA expression"""
+    if len(t) > 2:
+        t[0] = t[1].append(t[3])
+    else:
+        t[0] = [t[1]]
 
 
 def p_array_access(t):
