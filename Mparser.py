@@ -5,9 +5,8 @@ tokens = scanner.tokens
 
 precedence = (
     ('nonassoc', 'LESSER', 'GREATER', 'LESSEREQUAL', 'GREATEREQUAL'),
-    ("left", "EQUAL"),
     ('left', 'COMMA'),
-    ('right', 'ASSIGN'),
+    ('left', 'ASSIGN'),
     ("left", 'PLUS', 'MINUS'),
     ("left", "TIMES", "DIVIDE"),
     ('right', 'UMINUS')
@@ -44,7 +43,8 @@ def p_expression_value(t):
     """expression : INTEGER
                   | FLOAT
                   | matrix
-                  | STRING"""
+                  | STRING
+                  | bool"""
     # t[0] = t[1]
     pass
 
@@ -61,7 +61,7 @@ def p_group_expression(t):
 
 
 def p_instructions_scope(t):
-    """instructions_scope : LCURLY instructions RCURLY"""
+    """instruction : LCURLY instructions RCURLY"""
     pass
 
 
@@ -130,32 +130,33 @@ def p_position_assign(t):
 
 
 def p_if_else(t):
-    """instruction : IF bool instructions_scope
-                  | IF bool instructions_scope ELSE instructions_scope"""
+    """instruction : IF LPAREN expression RPAREN instruction
+                  | IF LPAREN expression RPAREN instruction ELSE instruction"""
     pass
 
 
 def p_while(t):
-    """instruction : WHILE LBRACET bool RBRACET instructions_scope"""
+    """instruction : WHILE LPAREN bool RPAREN instruction"""
     pass
 
 
 def p_for(t):
-    """instruction : FOR ID ASSIGN expression RANGE expression instructions_scope"""
+    """instruction : FOR ID ASSIGN expression RANGE expression instruction"""
     pass
 
 
 def p_special_instruction(t):
     """instruction : BREAK SEMICOLON
                    | CONTINUE SEMICOLON
-                   | RETURN SEMICOLON"""
+                   | RETURN expression SEMICOLON"""
     pass
 
 
 def p_print(t):
-    """instruction : PRINT expression"""
+    """instruction : PRINT list SEMICOLON"""
     #print(t[2])
     pass
+
 
 def p_matrix(t):
     """matrix : LBRACET arraylist RBRACET"""
