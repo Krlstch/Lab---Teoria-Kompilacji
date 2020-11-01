@@ -2,12 +2,13 @@ import scanner
 import ply.yacc as yacc
 
 from mast import Mast
+from matrix import Matrix
 
 tokens = scanner.tokens
 
 precedence = (
     ('nonassoc', 'LESSER', 'GREATER', 'LESSEREQUAL', 'GREATEREQUAL'),
-    ('left', 'COMMA'),
+    #('left', 'COMMA'),
     ('left', 'ASSIGN'),
     ("left", 'PLUS', 'MINUS'),
     ("left", "TIMES", "DIVIDE"),
@@ -127,7 +128,7 @@ def p_position_assign(t):
                    | ID array MINUSASSIGN expression SEMICOLON
                    | ID array TIMESASSIGN expression SEMICOLON
                    | ID array DIVIDEASSIGN expression SEMICOLON"""  # A[0,1] = 5, etc.
-    pass
+    t[0] = Mast(action='arrassign', params=[t[3], t[1], t[2], t[4]])
 
 
 def p_if_else(t):
@@ -153,7 +154,12 @@ def p_special_instruction(t):
     """instruction : BREAK SEMICOLON
                    | CONTINUE SEMICOLON
                    | RETURN expression SEMICOLON"""
-    pass
+    if t[1] == "break":
+        t[0] = Mast(action="break")
+    elif t[1] == "continue":
+        t[0] = Mast(action="continue")
+    elif t[1] == "return":
+        t[0] = Mast(action="return", params=t[2])
 
 
 def p_print(t):
@@ -161,21 +167,30 @@ def p_print(t):
     t[0] = Mast(action='print', params=t[2])
 
 
-
 def p_matrix(t):
     """matrix : LBRACET arraylist RBRACET"""
-    pass
+    t[0] = Matrix(t[2], len(t[2]), len(t[2][0]))
 
 
 def p_arraylist(t):
     """arraylist : array
                  | arraylist COMMA array"""
-    pass
+    if len(t) > 2:
+        for arr in t[1]:
+            if len(arr) != len(t[3]):
+                raise SyntaxError
+        t[1].append(t[3])
+        t[0] = t[1]
+    else:
+        t[0] = [t[1]]
 
 
 def p_array(t):
     """array : LBRACET list RBRACET"""
-    pass
+    for i in t[2]:
+        if not isinstance(i, int) and not isinstance(i, float):
+            raise SyntaxError
+    t[0] = t[2]
 
 
 def p_list(t):

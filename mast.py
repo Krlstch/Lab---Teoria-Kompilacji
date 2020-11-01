@@ -15,12 +15,14 @@ class Mast:
             print(' '.join(str(Mast.resolve(x)) for x in self.params))
         elif self.action == "assign":
             self.assign()
+        elif self.action == "arrassign":
+            self.arrassign()
         elif self.action == "binop":
             result = {
-                '+':  lambda a, b: a + b,
-                '-':  lambda a, b: a - b,
-                '*':  lambda a, b: a * b,
-                '/':  lambda a, b: a / b
+                '+': lambda a, b: a + b,
+                '-': lambda a, b: a - b,
+                '*': lambda a, b: a * b,
+                '/': lambda a, b: a / b
             }[self.params[0]](Mast.resolve(self.params[1]), Mast.resolve(self.params[2]))
         elif self.action == "relation":
             result = {
@@ -41,17 +43,33 @@ class Mast:
                 result = Mast.resolve(self.params[2])
         elif self.action == "while":
             while Mast.resolve(self.params[0]):
-                Mast.resolve(self.params[1])
+                result = Mast.resolve(self.params[1])
+                if result == "continue":
+                    continue
+                if result == "break":
+                    break
         elif self.action == "for":
             symbols[self.params[0]] = Mast.resolve(self.params[1])
-            while symbols[self.params[0]] != Mast.resolve(self.params[2]):
-                Mast.resolve(self.params[3])
+            while symbols[self.params[0]] <= Mast.resolve(self.params[2]):
+                result = Mast.resolve(self.params[3])
+                if result == "continue":
+                    continue
+                if result == "break":
+                    break
                 symbols[self.params[0]] += 1
         elif self.action == "get":
             result = symbols.get(self.params[0])
         elif self.action == "execute":
             for instr in self.params:
-                Mast.resolve(instr)
+                result = Mast.resolve(instr)
+                if result in ["continue", "break"]:
+                    break
+        elif self.action == "break":
+            result = "break"
+        elif self.action == "continue":
+            result = "continue"
+        elif self.action == "return":
+            result = "return"
         elif self.action == "uminus":
             result = - Mast.resolve(self.params)
         else:
@@ -80,3 +98,17 @@ class Mast:
             symbols[self.params[1]] = symbols[self.params[1]] * Mast.resolve(self.params[2])
         elif self.params[0] == "/=":
             symbols[self.params[1]] = symbols[self.params[1]] / Mast.resolve(self.params[2])
+
+    def arrassign(self):
+        if len(self.params[2]) != 2 or not isinstance(self.params[2][0], int) or not isinstance(self.params[2][1], int):
+            raise SyntaxError
+        if self.params[0] == "=":
+            symbols[self.params[1]].mat[self.params[2][0]][self.params[2][1]] = Mast.resolve(self.params[3])
+        elif self.params[0] == "+=":
+            symbols[self.params[1]].mat[self.params[2][0]][self.params[2][1]] += Mast.resolve(self.params[3])
+        elif self.params[0] == "-=":
+            symbols[self.params[1]].mat[self.params[2][0]][self.params[2][1]] -= Mast.resolve(self.params[3])
+        elif self.params[0] == "*=":
+            symbols[self.params[1]].mat[self.params[2][0]][self.params[2][1]] *= Mast.resolve(self.params[3])
+        elif self.params[0] == "/=":
+            symbols[self.params[1]].mat[self.params[2][0]][self.params[2][1]] /= Mast.resolve(self.params[3])
