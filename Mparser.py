@@ -1,14 +1,16 @@
+import numpy as np
+
 import scanner
 import ply.yacc as yacc
 
 from mast import Mast
-from matrix import Matrix
 
 tokens = scanner.tokens
 
 precedence = (
     ('nonassoc', 'LESSER', 'GREATER', 'LESSEREQUAL', 'GREATEREQUAL'),
-    #('left', 'COMMA'),
+    ("left", "TRANS"),
+    ('left', 'COMMA'),
     ('left', 'ASSIGN'),
     ("left", 'PLUS', 'MINUS'),
     ("left", "TIMES", "DIVIDE"),
@@ -23,8 +25,6 @@ def p_error(p):
         print("Unexpected end of input")
 
 
-names = {}
-instr_list = []
 
 
 def p_program(t):
@@ -103,14 +103,14 @@ def p_uminus(t):
 
 def p_trans(t):
     """matrix : expression TRANS"""
-    pass
+    t[0] = Mast(action="trans", params=t[1])
 
 
 def p_matrix_gen(t):
     """matrix : ZEROS LPAREN expression RPAREN
               | ONES LPAREN expression RPAREN
               | EYE LPAREN expression RPAREN"""
-    pass
+    t[0] = Mast(action="gen", params=[t[1], t[3]])
 
 
 def p_assign(t):
@@ -169,7 +169,7 @@ def p_print(t):
 
 def p_matrix(t):
     """matrix : LBRACET arraylist RBRACET"""
-    t[0] = Matrix(t[2], len(t[2]), len(t[2][0]))
+    t[0] = np.array(t[2])
 
 
 def p_arraylist(t):
@@ -205,7 +205,7 @@ def p_list(t):
 
 def p_array_access(t):
     """expression : ID array"""  # A[0,1], B[1], etc.
-    pass
+    t[0] = Mast(action="access", params=[t[1], t[2]])
 
 
 parser = yacc.yacc()
