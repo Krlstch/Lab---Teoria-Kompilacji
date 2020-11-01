@@ -28,14 +28,17 @@ instr_list = []
 
 def p_program(t):
     """program : instructions"""
-    t[0] = instr_list
+    t[0] = t[1]
 
 
 def p_instructions(t):
     """instructions : instructions instruction
                 | """
     if len(t) > 1:
-        instr_list.append(t[2])
+        t[1].append(t[2])
+        t[0] = t[1]
+    else:
+        t[0] = []
 
 
 def p_empty_instruction(t):
@@ -47,62 +50,58 @@ def p_expression_value(t):
     """expression : INTEGER
                   | FLOAT
                   | matrix
-                  | STRING
-                  | bool"""
+                  | STRING"""
     t[0] = t[1]
-    pass
 
 
 def p_expression_ID(t):
     """expression : ID"""
-    # t[0] = names[t[1]]
-    pass
+    t[0] = Mast(action="get", params=t[1])
 
 
 def p_group_expression(t):
     """expression : LPAREN expression RPAREN"""
-    pass
+    t[0] = t[2]
 
 
 def p_instructions_scope(t):
     """instruction : LCURLY instructions RCURLY"""
-    pass
+    t[0] = Mast(action="execute", params=t[2])
 
 
 def p_expression_binop(t):
     """expression : expression PLUS expression
                   | expression MINUS expression
                   | expression TIMES expression
-                  | expression DIVIDE expression
-                  | expression DOTPLUS expression
+                  | expression DIVIDE expression"""
+    t[0] = Mast(action="binop", params=[t[2], t[1], t[3]])
+
+
+def p_expression_binop_mat(t):
+    """expression : expression DOTPLUS expression
                   | expression DOTMINUS expression
                   | expression DOTTIMES expression
                   | expression DOTDIVIDE expression"""
-    pass
+    t[0] = Mast(action="binop_mat", params=[t[2], t[1], t[3]])
 
 
 def p_expression_relation(t):
-    """bool : expression LESSER expression
-            | expression GREATER expression
-            | expression LESSEREQUAL expression
-            | expression GREATEREQUAL expression
-            | expression NOTEQUAL expression
-            | expression EQUAL expression"""
-    pass
+    """condition : expression LESSER expression
+                | expression GREATER expression
+                | expression LESSEREQUAL expression
+                | expression GREATEREQUAL expression
+                | expression NOTEQUAL expression
+                | expression EQUAL expression"""
+    t[0] = Mast(action="relation", params=[t[2], t[1], t[3]])
 
 
 def p_uminus(t):
     """expression : MINUS expression %prec UMINUS"""
-    pass
+    t[0] = Mast(action="uminus", params=t[2])
 
 
 def p_trans(t):
     """matrix : expression TRANS"""
-    pass
-
-
-def p_matrix_assign(t):
-    """instruction : ID ASSIGN matrix SEMICOLON"""
     pass
 
 
@@ -119,9 +118,7 @@ def p_assign(t):
                     | ID MINUSASSIGN expression SEMICOLON
                     | ID TIMESASSIGN expression SEMICOLON
                     | ID DIVIDEASSIGN expression SEMICOLON"""
-    # if t[2] == "=":
-    #    names[t[1]] = t[3]
-    pass
+    t[0] = Mast(action='assign', params=[t[2], t[1], t[3]])
 
 
 def p_position_assign(t):
@@ -134,19 +131,22 @@ def p_position_assign(t):
 
 
 def p_if_else(t):
-    """instruction : IF LPAREN expression RPAREN instruction
-                  | IF LPAREN expression RPAREN instruction ELSE instruction"""
-    pass
+    """instruction : IF LPAREN condition RPAREN instruction
+                  | IF LPAREN condition RPAREN instruction ELSE instruction"""
+    if len(t) == 6:
+        t[0] = Mast(action="if", params=[t[3], t[5]])
+    else:
+        t[0] = Mast(action="ifelse", params=[t[3], t[5], t[7]])
 
 
 def p_while(t):
-    """instruction : WHILE LPAREN bool RPAREN instruction"""
-    pass
+    """instruction : WHILE LPAREN condition RPAREN instruction"""
+    t[0] = Mast(action="while", params=[t[3], t[5]])
 
 
 def p_for(t):
     """instruction : FOR ID ASSIGN expression RANGE expression instruction"""
-    pass
+    t[0] = Mast(action="for", params=[t[2], t[4], t[6], t[7]])
 
 
 def p_special_instruction(t):
@@ -182,7 +182,8 @@ def p_list(t):
     """list : expression
             | list COMMA expression"""
     if len(t) > 2:
-        t[0] = t[1].append(t[3])
+        t[1].append(t[3])
+        t[0] = t[1]
     else:
         t[0] = [t[1]]
 

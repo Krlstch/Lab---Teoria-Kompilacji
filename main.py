@@ -6,7 +6,7 @@ from mast import Mast
 if __name__ == '__main__':
 
     try:
-        filename = sys.argv[1] if len(sys.argv) > 1 else "test"
+        filename = sys.argv[1] if len(sys.argv) > 1 else "test.m"
         file = open(filename, "r")
     except IOError:
         print("Cannot open {0} file".format(filename))
@@ -14,5 +14,6 @@ if __name__ == '__main__':
 
     parser = Mparser.parser
     text = file.read()
-    for x in parser.parse(text, lexer=scanner.lexer, debug=1):
+    prog = parser.parse(text, lexer=scanner.lexer, debug=1)
+    for x in prog:
         Mast.resolve(x)
