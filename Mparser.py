@@ -3,7 +3,7 @@ import numpy as np
 import scanner
 import ply.yacc as yacc
 
-from mast import Mast
+from ast import Ast
 
 tokens = scanner.tokens
 
@@ -23,8 +23,6 @@ def p_error(p):
         print("Syntax error at line {0}: LexToken({1}, '{2}')".format(p.lineno, p.type, p.value))
     else:
         print("Unexpected end of input")
-
-
 
 
 def p_program(t):
@@ -57,7 +55,7 @@ def p_expression_value(t):
 
 def p_expression_ID(t):
     """expression : ID"""
-    t[0] = Mast(action="get", params=t[1])
+    t[0] = Ast(action="get", params=t[1])
 
 
 def p_group_expression(t):
@@ -67,7 +65,7 @@ def p_group_expression(t):
 
 def p_instructions_scope(t):
     """instruction : LCURLY instructions RCURLY"""
-    t[0] = Mast(action="execute", params=t[2])
+    t[0] = Ast(action="execute", params=t[2])
 
 
 def p_expression_binop(t):
@@ -75,7 +73,7 @@ def p_expression_binop(t):
                   | expression MINUS expression
                   | expression TIMES expression
                   | expression DIVIDE expression"""
-    t[0] = Mast(action="binop", params=[t[2], t[1], t[3]])
+    t[0] = Ast(action="binop", params=[t[2], t[1], t[3]])
 
 
 def p_expression_binop_mat(t):
@@ -83,7 +81,7 @@ def p_expression_binop_mat(t):
                   | expression DOTMINUS expression
                   | expression DOTTIMES expression
                   | expression DOTDIVIDE expression"""
-    t[0] = Mast(action="binop_mat", params=[t[2], t[1], t[3]])
+    t[0] = Ast(action="binop_mat", params=[t[2], t[1], t[3]])
 
 
 def p_expression_relation(t):
@@ -93,24 +91,24 @@ def p_expression_relation(t):
                 | expression GREATEREQUAL expression
                 | expression NOTEQUAL expression
                 | expression EQUAL expression"""
-    t[0] = Mast(action="relation", params=[t[2], t[1], t[3]])
+    t[0] = Ast(action="relation", params=[t[2], t[1], t[3]])
 
 
 def p_uminus(t):
     """expression : MINUS expression %prec UMINUS"""
-    t[0] = Mast(action="uminus", params=t[2])
+    t[0] = Ast(action="uminus", params=t[2])
 
 
 def p_trans(t):
     """matrix : expression TRANS"""
-    t[0] = Mast(action="trans", params=t[1])
+    t[0] = Ast(action="trans", params=t[1])
 
 
 def p_matrix_gen(t):
     """matrix : ZEROS LPAREN expression RPAREN
               | ONES LPAREN expression RPAREN
               | EYE LPAREN expression RPAREN"""
-    t[0] = Mast(action="gen", params=[t[1], t[3]])
+    t[0] = Ast(action="gen", params=[t[1], t[3]])
 
 
 def p_assign(t):
@@ -119,7 +117,7 @@ def p_assign(t):
                     | ID MINUSASSIGN expression SEMICOLON
                     | ID TIMESASSIGN expression SEMICOLON
                     | ID DIVIDEASSIGN expression SEMICOLON"""
-    t[0] = Mast(action='assign', params=[t[2], t[1], t[3]])
+    t[0] = Ast(action='assign', params=[t[2], t[1], t[3]])
 
 
 def p_position_assign(t):
@@ -128,26 +126,26 @@ def p_position_assign(t):
                    | ID array MINUSASSIGN expression SEMICOLON
                    | ID array TIMESASSIGN expression SEMICOLON
                    | ID array DIVIDEASSIGN expression SEMICOLON"""  # A[0,1] = 5, etc.
-    t[0] = Mast(action='arrassign', params=[t[3], t[1], t[2], t[4]])
+    t[0] = Ast(action='arrassign', params=[t[3], t[1], t[2], t[4]])
 
 
 def p_if_else(t):
     """instruction : IF LPAREN condition RPAREN instruction
                   | IF LPAREN condition RPAREN instruction ELSE instruction"""
     if len(t) == 6:
-        t[0] = Mast(action="if", params=[t[3], t[5]])
+        t[0] = Ast(action="if", params=[t[3], t[5]])
     else:
-        t[0] = Mast(action="ifelse", params=[t[3], t[5], t[7]])
+        t[0] = Ast(action="ifelse", params=[t[3], t[5], t[7]])
 
 
 def p_while(t):
     """instruction : WHILE LPAREN condition RPAREN instruction"""
-    t[0] = Mast(action="while", params=[t[3], t[5]])
+    t[0] = Ast(action="while", params=[t[3], t[5]])
 
 
 def p_for(t):
     """instruction : FOR ID ASSIGN expression RANGE expression instruction"""
-    t[0] = Mast(action="for", params=[t[2], t[4], t[6], t[7]])
+    t[0] = Ast(action="for", params=[t[2], t[4], t[6], t[7]])
 
 
 def p_special_instruction(t):
@@ -155,16 +153,16 @@ def p_special_instruction(t):
                    | CONTINUE SEMICOLON
                    | RETURN expression SEMICOLON"""
     if t[1] == "break":
-        t[0] = Mast(action="break")
+        t[0] = Ast(action="break")
     elif t[1] == "continue":
-        t[0] = Mast(action="continue")
+        t[0] = Ast(action="continue")
     elif t[1] == "return":
-        t[0] = Mast(action="return", params=t[2])
+        t[0] = Ast(action="return", params=t[2])
 
 
 def p_print(t):
     """instruction : PRINT list SEMICOLON"""
-    t[0] = Mast(action='print', params=t[2])
+    t[0] = Ast(action='print', params=t[2])
 
 
 def p_matrix(t):
@@ -205,7 +203,7 @@ def p_list(t):
 
 def p_array_access(t):
     """expression : ID array"""  # A[0,1], B[1], etc.
-    t[0] = Mast(action="access", params=[t[1], t[2]])
+    t[0] = Ast(action="access", params=[t[1], t[2]])
 
 
 parser = yacc.yacc()

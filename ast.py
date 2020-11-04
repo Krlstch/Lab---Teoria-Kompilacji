@@ -1,0 +1,126 @@
+import numpy as np
+
+symbols = {}
+
+
+class Ast:
+    action = None
+    params = None
+
+    def __init__(self, action=None, params=None):
+        self.action = action
+        self.params = params
+
+    def execute(self):
+        result = None
+        if self.action == 'print':
+            print(' '.join(str(Ast.resolve(x)) for x in self.params))
+        elif self.action == "assign":
+            self.assign()
+        elif self.action == "arrassign":
+            self.arrassign()
+        elif self.action == "access":
+            result = symbols[self.params[0]][self.params[1][0]][self.params[1][1]]
+        elif self.action == "binop":
+            result = {
+                '+': lambda a, b: a + b,
+                '-': lambda a, b: a - b,
+                '*': lambda a, b: a * b,
+                '/': lambda a, b: a / b
+            }[self.params[0]](Ast.resolve(self.params[1]), Ast.resolve(self.params[2]))
+        elif self.action == "binop_mat":
+            result = {
+                '.+': lambda a, b: a + b,
+                '.-': lambda a, b: a - b,
+                '.*': lambda a, b: np.multiply(a, b),
+                './': lambda a, b: np.divide(a, b)
+            }[self.params[0]](Ast.resolve(self.params[1]), Ast.resolve(self.params[2]))
+        elif self.action == "relation":
+            result = {
+                '>': lambda a, b: (a > b),
+                '>=': lambda a, b: (a >= b),
+                '<': lambda a, b: (a < b),
+                '<=': lambda a, b: (a <= b),
+                '==': lambda a, b: (a == b),
+                '!=': lambda a, b: (a != b)
+            }[self.params[0]](Ast.resolve(self.params[1]), Ast.resolve(self.params[2]))
+        elif self.action == "if":
+            if Ast.resolve(self.params[0]):
+                result = Ast.resolve(self.params[1])
+        elif self.action == "ifelse":
+            if Ast.resolve(self.params[0]):
+                result = Ast.resolve(self.params[1])
+            else:
+                result = Ast.resolve(self.params[2])
+        elif self.action == "while":
+            while Ast.resolve(self.params[0]):
+                result = Ast.resolve(self.params[1])
+                if result == "continue":
+                    continue
+                if result == "break":
+                    break
+        elif self.action == "for":
+            symbols[self.params[0]] = Ast.resolve(self.params[1])
+            while symbols[self.params[0]] <= Ast.resolve(self.params[2]):
+                result = Ast.resolve(self.params[3])
+                if result == "continue":
+                    continue
+                if result == "break":
+                    break
+                symbols[self.params[0]] += 1
+        elif self.action == "get":
+            result = symbols.get(self.params)
+        elif self.action == "execute":
+            for instr in self.params:
+                result = Ast.resolve(instr)
+                if result in ["continue", "break"]:
+                    break
+        elif self.action == "break":
+            result = "break"
+        elif self.action == "continue":
+            result = "continue"
+        elif self.action == "return":
+            exit(self.params)
+        elif self.action == "uminus":
+            result = - Ast.resolve(self.params)
+        elif self.action == "trans":
+            result = np.transpose(Ast.resolve(self.params))
+        elif self.action == "gen":
+            result = {
+                'zeros': lambda a: np.zeros(shape=[a, a]),
+                'ones': lambda a: np.ones(shape=[a, a]),
+                'eye': lambda a: np.eye(a)
+            }[self.params[0]](Ast.resolve(self.params[1]))
+        else:
+            print("Error, unsupported operation:", str(self))
+        return result
+
+    @staticmethod
+    def resolve(x):
+        if isinstance(x, Ast):
+            return x.execute()
+        return x
+
+    def assign(self):
+        if self.params[0] == "=":
+            symbols[self.params[1]] = Ast.resolve(self.params[2])
+        elif self.params[0] == "+=":
+            symbols[self.params[1]] = symbols[self.params[1]] + Ast.resolve(self.params[2])
+        elif self.params[0] == "-=":
+            symbols[self.params[1]] = symbols[self.params[1]] - Ast.resolve(self.params[2])
+        elif self.params[0] == "*=":
+            symbols[self.params[1]] = symbols[self.params[1]] * Ast.resolve(self.params[2])
+        elif self.params[0] == "/=":
+            symbols[self.params[1]] = symbols[self.params[1]] / Ast.resolve(self.params[2])
+
+    def arrassign(self):
+        if self.params[0] == "=":
+            symbols[self.params[1]][self.params[2][0]][self.params[2][1]] = Ast.resolve(self.params[3])
+        elif self.params[0] == "+=":
+            symbols[self.params[1]][self.params[2][0]][self.params[2][1]] += Ast.resolve(self.params[3])
+        elif self.params[0] == "-=":
+            symbols[self.params[1]][self.params[2][0]][self.params[2][1]] -= Ast.resolve(self.params[3])
+        elif self.params[0] == "*=":
+            symbols[self.params[1]][self.params[2][0]][self.params[2][1]] *= Ast.resolve(self.params[3])
+        elif self.params[0] == "/=":
+            symbols[self.params[1]][self.params[2][0]][self.params[2][1]] /= Ast.resolve(self.params[3])

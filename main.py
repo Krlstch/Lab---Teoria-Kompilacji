@@ -1,7 +1,7 @@
 import sys
 import scanner
 import Mparser
-from mast import Mast
+from ast import Ast
 
 if __name__ == '__main__':
 
@@ -16,4 +16,4 @@ if __name__ == '__main__':
     text = file.read()
     prog = parser.parse(text, lexer=scanner.lexer, debug=0)
     for x in prog:
-        Mast.resolve(x)
+        Ast.resolve(x)
