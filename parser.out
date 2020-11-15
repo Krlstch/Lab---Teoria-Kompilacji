@@ -3,6 +3,7 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 Unused terminals:
 
     COMMENT
+    IFX
 
 Grammar
 
@@ -85,6 +86,7 @@ GREATER              : 21
 GREATEREQUAL         : 23
 ID                   : 9 31 32 33 34 35 36 37 38 39 40 44 55
 IF                   : 41 42
+IFX                  : 
 INTEGER              : 5
 LBRACET              : 49 52
 LCURLY               : 11
@@ -2055,7 +2057,6 @@ state 69
     DOTMINUS        reduce using rule 26 (expression -> MINUS expression .)
     DOTTIMES        reduce using rule 26 (expression -> MINUS expression .)
     DOTDIVIDE       reduce using rule 26 (expression -> MINUS expression .)
-    TRANS           reduce using rule 26 (expression -> MINUS expression .)
     COMMA           reduce using rule 26 (expression -> MINUS expression .)
     RBRACET         reduce using rule 26 (expression -> MINUS expression .)
     LESSER          reduce using rule 26 (expression -> MINUS expression .)
@@ -2075,7 +2076,9 @@ state 69
     CONTINUE        reduce using rule 26 (expression -> MINUS expression .)
     RETURN          reduce using rule 26 (expression -> MINUS expression .)
     PRINT           reduce using rule 26 (expression -> MINUS expression .)
+    TRANS           shift and go to state 66
 
+  ! TRANS           [ reduce using rule 26 (expression -> MINUS expression .) ]
   ! PLUS            [ shift and go to state 58 ]
   ! MINUS           [ shift and go to state 59 ]
   ! TIMES           [ shift and go to state 60 ]
@@ -2084,7 +2087,6 @@ state 69
   ! DOTMINUS        [ shift and go to state 63 ]
   ! DOTTIMES        [ shift and go to state 64 ]
   ! DOTDIVIDE       [ shift and go to state 65 ]
-  ! TRANS           [ shift and go to state 66 ]
 
 
 state 70
@@ -2889,11 +2891,6 @@ state 97
     SEMICOLON       reduce using rule 12 (expression -> expression PLUS expression .)
     PLUS            reduce using rule 12 (expression -> expression PLUS expression .)
     MINUS           reduce using rule 12 (expression -> expression PLUS expression .)
-    DOTPLUS         reduce using rule 12 (expression -> expression PLUS expression .)
-    DOTMINUS        reduce using rule 12 (expression -> expression PLUS expression .)
-    DOTTIMES        reduce using rule 12 (expression -> expression PLUS expression .)
-    DOTDIVIDE       reduce using rule 12 (expression -> expression PLUS expression .)
-    TRANS           reduce using rule 12 (expression -> expression PLUS expression .)
     COMMA           reduce using rule 12 (expression -> expression PLUS expression .)
     RBRACET         reduce using rule 12 (expression -> expression PLUS expression .)
     LESSER          reduce using rule 12 (expression -> expression PLUS expression .)
@@ -2915,16 +2912,21 @@ state 97
     PRINT           reduce using rule 12 (expression -> expression PLUS expression .)
     TIMES           shift and go to state 60
     DIVIDE          shift and go to state 61
+    DOTPLUS         shift and go to state 62
+    DOTMINUS        shift and go to state 63
+    DOTTIMES        shift and go to state 64
+    DOTDIVIDE       shift and go to state 65
+    TRANS           shift and go to state 66
 
   ! TIMES           [ reduce using rule 12 (expression -> expression PLUS expression .) ]
   ! DIVIDE          [ reduce using rule 12 (expression -> expression PLUS expression .) ]
+  ! DOTPLUS         [ reduce using rule 12 (expression -> expression PLUS expression .) ]
+  ! DOTMINUS        [ reduce using rule 12 (expression -> expression PLUS expression .) ]
+  ! DOTTIMES        [ reduce using rule 12 (expression -> expression PLUS expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 12 (expression -> expression PLUS expression .) ]
+  ! TRANS           [ reduce using rule 12 (expression -> expression PLUS expression .) ]
   ! PLUS            [ shift and go to state 58 ]
   ! MINUS           [ shift and go to state 59 ]
-  ! DOTPLUS         [ shift and go to state 62 ]
-  ! DOTMINUS        [ shift and go to state 63 ]
-  ! DOTTIMES        [ shift and go to state 64 ]
-  ! DOTDIVIDE       [ shift and go to state 65 ]
-  ! TRANS           [ shift and go to state 66 ]
 
 
 state 98
@@ -2943,11 +2945,6 @@ state 98
     SEMICOLON       reduce using rule 13 (expression -> expression MINUS expression .)
     PLUS            reduce using rule 13 (expression -> expression MINUS expression .)
     MINUS           reduce using rule 13 (expression -> expression MINUS expression .)
-    DOTPLUS         reduce using rule 13 (expression -> expression MINUS expression .)
-    DOTMINUS        reduce using rule 13 (expression -> expression MINUS expression .)
-    DOTTIMES        reduce using rule 13 (expression -> expression MINUS expression .)
-    DOTDIVIDE       reduce using rule 13 (expression -> expression MINUS expression .)
-    TRANS           reduce using rule 13 (expression -> expression MINUS expression .)
     COMMA           reduce using rule 13 (expression -> expression MINUS expression .)
     RBRACET         reduce using rule 13 (expression -> expression MINUS expression .)
     LESSER          reduce using rule 13 (expression -> expression MINUS expression .)
@@ -2969,16 +2966,21 @@ state 98
     PRINT           reduce using rule 13 (expression -> expression MINUS expression .)
     TIMES           shift and go to state 60
     DIVIDE          shift and go to state 61
+    DOTPLUS         shift and go to state 62
+    DOTMINUS        shift and go to state 63
+    DOTTIMES        shift and go to state 64
+    DOTDIVIDE       shift and go to state 65
+    TRANS           shift and go to state 66
 
   ! TIMES           [ reduce using rule 13 (expression -> expression MINUS expression .) ]
   ! DIVIDE          [ reduce using rule 13 (expression -> expression MINUS expression .) ]
+  ! DOTPLUS         [ reduce using rule 13 (expression -> expression MINUS expression .) ]
+  ! DOTMINUS        [ reduce using rule 13 (expression -> expression MINUS expression .) ]
+  ! DOTTIMES        [ reduce using rule 13 (expression -> expression MINUS expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 13 (expression -> expression MINUS expression .) ]
+  ! TRANS           [ reduce using rule 13 (expression -> expression MINUS expression .) ]
   ! PLUS            [ shift and go to state 58 ]
   ! MINUS           [ shift and go to state 59 ]
-  ! DOTPLUS         [ shift and go to state 62 ]
-  ! DOTMINUS        [ shift and go to state 63 ]
-  ! DOTTIMES        [ shift and go to state 64 ]
-  ! DOTDIVIDE       [ shift and go to state 65 ]
-  ! TRANS           [ shift and go to state 66 ]
 
 
 state 99
@@ -2999,11 +3001,6 @@ state 99
     MINUS           reduce using rule 14 (expression -> expression TIMES expression .)
     TIMES           reduce using rule 14 (expression -> expression TIMES expression .)
     DIVIDE          reduce using rule 14 (expression -> expression TIMES expression .)
-    DOTPLUS         reduce using rule 14 (expression -> expression TIMES expression .)
-    DOTMINUS        reduce using rule 14 (expression -> expression TIMES expression .)
-    DOTTIMES        reduce using rule 14 (expression -> expression TIMES expression .)
-    DOTDIVIDE       reduce using rule 14 (expression -> expression TIMES expression .)
-    TRANS           reduce using rule 14 (expression -> expression TIMES expression .)
     COMMA           reduce using rule 14 (expression -> expression TIMES expression .)
     RBRACET         reduce using rule 14 (expression -> expression TIMES expression .)
     LESSER          reduce using rule 14 (expression -> expression TIMES expression .)
@@ -3023,16 +3020,21 @@ state 99
     CONTINUE        reduce using rule 14 (expression -> expression TIMES expression .)
     RETURN          reduce using rule 14 (expression -> expression TIMES expression .)
     PRINT           reduce using rule 14 (expression -> expression TIMES expression .)
+    DOTPLUS         shift and go to state 62
+    DOTMINUS        shift and go to state 63
+    DOTTIMES        shift and go to state 64
+    DOTDIVIDE       shift and go to state 65
+    TRANS           shift and go to state 66
 
+  ! DOTPLUS         [ reduce using rule 14 (expression -> expression TIMES expression .) ]
+  ! DOTMINUS        [ reduce using rule 14 (expression -> expression TIMES expression .) ]
+  ! DOTTIMES        [ reduce using rule 14 (expression -> expression TIMES expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 14 (expression -> expression TIMES expression .) ]
+  ! TRANS           [ reduce using rule 14 (expression -> expression TIMES expression .) ]
   ! PLUS            [ shift and go to state 58 ]
   ! MINUS           [ shift and go to state 59 ]
   ! TIMES           [ shift and go to state 60 ]
   ! DIVIDE          [ shift and go to state 61 ]
-  ! DOTPLUS         [ shift and go to state 62 ]
-  ! DOTMINUS        [ shift and go to state 63 ]
-  ! DOTTIMES        [ shift and go to state 64 ]
-  ! DOTDIVIDE       [ shift and go to state 65 ]
-  ! TRANS           [ shift and go to state 66 ]
 
 
 state 100
@@ -3053,11 +3055,6 @@ state 100
     MINUS           reduce using rule 15 (expression -> expression DIVIDE expression .)
     TIMES           reduce using rule 15 (expression -> expression DIVIDE expression .)
     DIVIDE          reduce using rule 15 (expression -> expression DIVIDE expression .)
-    DOTPLUS         reduce using rule 15 (expression -> expression DIVIDE expression .)
-    DOTMINUS        reduce using rule 15 (expression -> expression DIVIDE expression .)
-    DOTTIMES        reduce using rule 15 (expression -> expression DIVIDE expression .)
-    DOTDIVIDE       reduce using rule 15 (expression -> expression DIVIDE expression .)
-    TRANS           reduce using rule 15 (expression -> expression DIVIDE expression .)
     COMMA           reduce using rule 15 (expression -> expression DIVIDE expression .)
     RBRACET         reduce using rule 15 (expression -> expression DIVIDE expression .)
     LESSER          reduce using rule 15 (expression -> expression DIVIDE expression .)
@@ -3077,16 +3074,21 @@ state 100
     CONTINUE        reduce using rule 15 (expression -> expression DIVIDE expression .)
     RETURN          reduce using rule 15 (expression -> expression DIVIDE expression .)
     PRINT           reduce using rule 15 (expression -> expression DIVIDE expression .)
+    DOTPLUS         shift and go to state 62
+    DOTMINUS        shift and go to state 63
+    DOTTIMES        shift and go to state 64
+    DOTDIVIDE       shift and go to state 65
+    TRANS           shift and go to state 66
 
+  ! DOTPLUS         [ reduce using rule 15 (expression -> expression DIVIDE expression .) ]
+  ! DOTMINUS        [ reduce using rule 15 (expression -> expression DIVIDE expression .) ]
+  ! DOTTIMES        [ reduce using rule 15 (expression -> expression DIVIDE expression .) ]
+  ! DOTDIVIDE       [ reduce using rule 15 (expression -> expression DIVIDE expression .) ]
+  ! TRANS           [ reduce using rule 15 (expression -> expression DIVIDE expression .) ]
   ! PLUS            [ shift and go to state 58 ]
   ! MINUS           [ shift and go to state 59 ]
   ! TIMES           [ shift and go to state 60 ]
   ! DIVIDE          [ shift and go to state 61 ]
-  ! DOTPLUS         [ shift and go to state 62 ]
-  ! DOTMINUS        [ shift and go to state 63 ]
-  ! DOTTIMES        [ shift and go to state 64 ]
-  ! DOTDIVIDE       [ shift and go to state 65 ]
-  ! TRANS           [ shift and go to state 66 ]
 
 
 state 101
@@ -3102,16 +3104,13 @@ state 101
     (19) expression -> expression . DOTDIVIDE expression
     (27) matrix -> expression . TRANS
 
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for DOTPLUS resolved as shift
-  ! shift/reduce conflict for DOTMINUS resolved as shift
-  ! shift/reduce conflict for DOTTIMES resolved as shift
-  ! shift/reduce conflict for DOTDIVIDE resolved as shift
-  ! shift/reduce conflict for TRANS resolved as shift
     SEMICOLON       reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    PLUS            reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    MINUS           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    TIMES           reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    DIVIDE          reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    DOTPLUS         reduce using rule 16 (expression -> expression DOTPLUS expression .)
+    DOTMINUS        reduce using rule 16 (expression -> expression DOTPLUS expression .)
     COMMA           reduce using rule 16 (expression -> expression DOTPLUS expression .)
     RBRACET         reduce using rule 16 (expression -> expression DOTPLUS expression .)
     LESSER          reduce using rule 16 (expression -> expression DOTPLUS expression .)
@@ -3131,25 +3130,19 @@ state 101
     CONTINUE        reduce using rule 16 (expression -> expression DOTPLUS expression .)
     RETURN          reduce using rule 16 (expression -> expression DOTPLUS expression .)
     PRINT           reduce using rule 16 (expression -> expression DOTPLUS expression .)
-    PLUS            shift and go to state 58
-    MINUS           shift and go to state 59
-    TIMES           shift and go to state 60
-    DIVIDE          shift and go to state 61
-    DOTPLUS         shift and go to state 62
-    DOTMINUS        shift and go to state 63
     DOTTIMES        shift and go to state 64
     DOTDIVIDE       shift and go to state 65
     TRANS           shift and go to state 66
 
-  ! PLUS            [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
-  ! MINUS           [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
-  ! TIMES           [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
-  ! DIVIDE          [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
-  ! DOTPLUS         [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
-  ! DOTMINUS        [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
   ! DOTTIMES        [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
   ! DOTDIVIDE       [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
   ! TRANS           [ reduce using rule 16 (expression -> expression DOTPLUS expression .) ]
+  ! PLUS            [ shift and go to state 58 ]
+  ! MINUS           [ shift and go to state 59 ]
+  ! TIMES           [ shift and go to state 60 ]
+  ! DIVIDE          [ shift and go to state 61 ]
+  ! DOTPLUS         [ shift and go to state 62 ]
+  ! DOTMINUS        [ shift and go to state 63 ]
 
 
 state 102
@@ -3165,16 +3158,13 @@ state 102
     (19) expression -> expression . DOTDIVIDE expression
     (27) matrix -> expression . TRANS
 
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for DOTPLUS resolved as shift
-  ! shift/reduce conflict for DOTMINUS resolved as shift
-  ! shift/reduce conflict for DOTTIMES resolved as shift
-  ! shift/reduce conflict for DOTDIVIDE resolved as shift
-  ! shift/reduce conflict for TRANS resolved as shift
     SEMICOLON       reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    PLUS            reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    MINUS           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    TIMES           reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    DIVIDE          reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    DOTPLUS         reduce using rule 17 (expression -> expression DOTMINUS expression .)
+    DOTMINUS        reduce using rule 17 (expression -> expression DOTMINUS expression .)
     COMMA           reduce using rule 17 (expression -> expression DOTMINUS expression .)
     RBRACET         reduce using rule 17 (expression -> expression DOTMINUS expression .)
     LESSER          reduce using rule 17 (expression -> expression DOTMINUS expression .)
@@ -3194,25 +3184,19 @@ state 102
     CONTINUE        reduce using rule 17 (expression -> expression DOTMINUS expression .)
     RETURN          reduce using rule 17 (expression -> expression DOTMINUS expression .)
     PRINT           reduce using rule 17 (expression -> expression DOTMINUS expression .)
-    PLUS            shift and go to state 58
-    MINUS           shift and go to state 59
-    TIMES           shift and go to state 60
-    DIVIDE          shift and go to state 61
-    DOTPLUS         shift and go to state 62
-    DOTMINUS        shift and go to state 63
     DOTTIMES        shift and go to state 64
     DOTDIVIDE       shift and go to state 65
     TRANS           shift and go to state 66
 
-  ! PLUS            [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
-  ! MINUS           [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
-  ! TIMES           [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
-  ! DOTPLUS         [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
-  ! DOTMINUS        [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
   ! DOTTIMES        [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
   ! DOTDIVIDE       [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
   ! TRANS           [ reduce using rule 17 (expression -> expression DOTMINUS expression .) ]
+  ! PLUS            [ shift and go to state 58 ]
+  ! MINUS           [ shift and go to state 59 ]
+  ! TIMES           [ shift and go to state 60 ]
+  ! DIVIDE          [ shift and go to state 61 ]
+  ! DOTPLUS         [ shift and go to state 62 ]
+  ! DOTMINUS        [ shift and go to state 63 ]
 
 
 state 103
@@ -3228,16 +3212,15 @@ state 103
     (19) expression -> expression . DOTDIVIDE expression
     (27) matrix -> expression . TRANS
 
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for DOTPLUS resolved as shift
-  ! shift/reduce conflict for DOTMINUS resolved as shift
-  ! shift/reduce conflict for DOTTIMES resolved as shift
-  ! shift/reduce conflict for DOTDIVIDE resolved as shift
-  ! shift/reduce conflict for TRANS resolved as shift
     SEMICOLON       reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    PLUS            reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    MINUS           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    TIMES           reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    DIVIDE          reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    DOTPLUS         reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    DOTMINUS        reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    DOTTIMES        reduce using rule 18 (expression -> expression DOTTIMES expression .)
+    DOTDIVIDE       reduce using rule 18 (expression -> expression DOTTIMES expression .)
     COMMA           reduce using rule 18 (expression -> expression DOTTIMES expression .)
     RBRACET         reduce using rule 18 (expression -> expression DOTTIMES expression .)
     LESSER          reduce using rule 18 (expression -> expression DOTTIMES expression .)
@@ -3257,25 +3240,17 @@ state 103
     CONTINUE        reduce using rule 18 (expression -> expression DOTTIMES expression .)
     RETURN          reduce using rule 18 (expression -> expression DOTTIMES expression .)
     PRINT           reduce using rule 18 (expression -> expression DOTTIMES expression .)
-    PLUS            shift and go to state 58
-    MINUS           shift and go to state 59
-    TIMES           shift and go to state 60
-    DIVIDE          shift and go to state 61
-    DOTPLUS         shift and go to state 62
-    DOTMINUS        shift and go to state 63
-    DOTTIMES        shift and go to state 64
-    DOTDIVIDE       shift and go to state 65
     TRANS           shift and go to state 66
 
-  ! PLUS            [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
-  ! MINUS           [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
-  ! TIMES           [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
-  ! DIVIDE          [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
-  ! DOTPLUS         [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
-  ! DOTMINUS        [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
-  ! DOTTIMES        [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
-  ! DOTDIVIDE       [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
   ! TRANS           [ reduce using rule 18 (expression -> expression DOTTIMES expression .) ]
+  ! PLUS            [ shift and go to state 58 ]
+  ! MINUS           [ shift and go to state 59 ]
+  ! TIMES           [ shift and go to state 60 ]
+  ! DIVIDE          [ shift and go to state 61 ]
+  ! DOTPLUS         [ shift and go to state 62 ]
+  ! DOTMINUS        [ shift and go to state 63 ]
+  ! DOTTIMES        [ shift and go to state 64 ]
+  ! DOTDIVIDE       [ shift and go to state 65 ]
 
 
 state 104
@@ -3291,16 +3266,15 @@ state 104
     (19) expression -> expression . DOTDIVIDE expression
     (27) matrix -> expression . TRANS
 
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for DOTPLUS resolved as shift
-  ! shift/reduce conflict for DOTMINUS resolved as shift
-  ! shift/reduce conflict for DOTTIMES resolved as shift
-  ! shift/reduce conflict for DOTDIVIDE resolved as shift
-  ! shift/reduce conflict for TRANS resolved as shift
     SEMICOLON       reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    PLUS            reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    MINUS           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    TIMES           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    DIVIDE          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    DOTPLUS         reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    DOTMINUS        reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    DOTTIMES        reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
+    DOTDIVIDE       reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
     COMMA           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
     RBRACET         reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
     LESSER          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
@@ -3320,25 +3294,17 @@ state 104
     CONTINUE        reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
     RETURN          reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
     PRINT           reduce using rule 19 (expression -> expression DOTDIVIDE expression .)
-    PLUS            shift and go to state 58
-    MINUS           shift and go to state 59
-    TIMES           shift and go to state 60
-    DIVIDE          shift and go to state 61
-    DOTPLUS         shift and go to state 62
-    DOTMINUS        shift and go to state 63
-    DOTTIMES        shift and go to state 64
-    DOTDIVIDE       shift and go to state 65
     TRANS           shift and go to state 66
 
-  ! PLUS            [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
-  ! MINUS           [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
-  ! TIMES           [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
-  ! DIVIDE          [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
-  ! DOTPLUS         [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
-  ! DOTMINUS        [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
-  ! DOTTIMES        [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
-  ! DOTDIVIDE       [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
   ! TRANS           [ reduce using rule 19 (expression -> expression DOTDIVIDE expression .) ]
+  ! PLUS            [ shift and go to state 58 ]
+  ! MINUS           [ shift and go to state 59 ]
+  ! TIMES           [ shift and go to state 60 ]
+  ! DIVIDE          [ shift and go to state 61 ]
+  ! DOTPLUS         [ shift and go to state 62 ]
+  ! DOTMINUS        [ shift and go to state 63 ]
+  ! DOTTIMES        [ shift and go to state 64 ]
+  ! DOTDIVIDE       [ shift and go to state 65 ]
 
 
 state 105
@@ -3622,7 +3588,6 @@ state 117
     (41) instruction -> IF LPAREN condition RPAREN instruction .
     (42) instruction -> IF LPAREN condition RPAREN instruction . ELSE instruction
 
-  ! shift/reduce conflict for ELSE resolved as shift
     SEMICOLON       reduce using rule 41 (instruction -> IF LPAREN condition RPAREN instruction .)
     LCURLY          reduce using rule 41 (instruction -> IF LPAREN condition RPAREN instruction .)
     ID              reduce using rule 41 (instruction -> IF LPAREN condition RPAREN instruction .)
@@ -4090,43 +4055,3 @@ state 133
     RCURLY          reduce using rule 44 (instruction -> FOR ID ASSIGN expression RANGE expression instruction .)
     ELSE            reduce using rule 44 (instruction -> FOR ID ASSIGN expression RANGE expression instruction .)
 
-WARNING: 
-WARNING: Conflicts:
-WARNING: 
-WARNING: shift/reduce conflict for PLUS in state 101 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 101 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 101 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 101 resolved as shift
-WARNING: shift/reduce conflict for DOTPLUS in state 101 resolved as shift
-WARNING: shift/reduce conflict for DOTMINUS in state 101 resolved as shift
-WARNING: shift/reduce conflict for DOTTIMES in state 101 resolved as shift
-WARNING: shift/reduce conflict for DOTDIVIDE in state 101 resolved as shift
-WARNING: shift/reduce conflict for TRANS in state 101 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 102 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 102 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 102 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 102 resolved as shift
-WARNING: shift/reduce conflict for DOTPLUS in state 102 resolved as shift
-WARNING: shift/reduce conflict for DOTMINUS in state 102 resolved as shift
-WARNING: shift/reduce conflict for DOTTIMES in state 102 resolved as shift
-WARNING: shift/reduce conflict for DOTDIVIDE in state 102 resolved as shift
-WARNING: shift/reduce conflict for TRANS in state 102 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 103 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 103 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 103 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 103 resolved as shift
-WARNING: shift/reduce conflict for DOTPLUS in state 103 resolved as shift
-WARNING: shift/reduce conflict for DOTMINUS in state 103 resolved as shift
-WARNING: shift/reduce conflict for DOTTIMES in state 103 resolved as shift
-WARNING: shift/reduce conflict for DOTDIVIDE in state 103 resolved as shift
-WARNING: shift/reduce conflict for TRANS in state 103 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 104 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 104 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 104 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 104 resolved as shift
-WARNING: shift/reduce conflict for DOTPLUS in state 104 resolved as shift
-WARNING: shift/reduce conflict for DOTMINUS in state 104 resolved as shift
-WARNING: shift/reduce conflict for DOTTIMES in state 104 resolved as shift
-WARNING: shift/reduce conflict for DOTDIVIDE in state 104 resolved as shift
-WARNING: shift/reduce conflict for TRANS in state 104 resolved as shift
-WARNING: shift/reduce conflict for ELSE in state 117 resolved as shift

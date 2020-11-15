@@ -8,13 +8,16 @@ from ast import Ast
 tokens = scanner.tokens
 
 precedence = (
-    ('nonassoc', 'LESSER', 'GREATER', 'LESSEREQUAL', 'GREATEREQUAL'),
-    ("left", "TRANS"),
-    ('left', 'COMMA'),
     ('left', 'ASSIGN'),
+    ('nonassoc', 'LESSER', 'GREATER', 'LESSEREQUAL', 'GREATEREQUAL'),
     ("left", 'PLUS', 'MINUS'),
     ("left", "TIMES", "DIVIDE"),
-    ('right', 'UMINUS')
+    ("left", 'DOTPLUS', 'DOTMINUS'),
+    ("left", "DOTTIMES", "DOTDIVIDE"),
+    ('right', 'UMINUS'),
+    ("left", "TRANS"),
+    ("nonassoc", "IFX"),
+    ("nonassoc", "ELSE")
 )
 
 
@@ -130,7 +133,7 @@ def p_position_assign(t):
 
 
 def p_if_else(t):
-    """instruction : IF LPAREN condition RPAREN instruction
+    """instruction : IF LPAREN condition RPAREN instruction %prec IFX
                   | IF LPAREN condition RPAREN instruction ELSE instruction"""
     if len(t) == 6:
         t[0] = Ast(action="if", params=[t[3], t[5]])

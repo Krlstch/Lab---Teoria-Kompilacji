@@ -36,6 +36,7 @@ tokens = [
     "STRING",
     "COMMENT",
 
+    "IFX",
     "IF",
     "ELSE",
     "FOR",
